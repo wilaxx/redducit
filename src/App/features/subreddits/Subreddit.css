@@ -1,0 +1,12 @@
+.Subreddit {
+    padding: 20px;
+}
+
+.Subreddit li {
+    padding: 10px;
+}
+
+.Subreddit li button {
+    padding: 1rem;
+    width: 50%;
+}

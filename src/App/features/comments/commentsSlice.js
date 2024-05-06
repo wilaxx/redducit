@@ -26,29 +26,28 @@ export const fetchComments = createAsyncThunk('comments/fetchComments', async (u
 
 
 
-const CommentsSlice = createSlice({
+const commentsSlice = createSlice({
 	name: 'comments',
 	initialState,
-	extraReducers: {
-		[fetchComments.pending]: (state) => {
-      		state.isLoading = true;
-      		state.isError = false;
-    },
-    	[fetchComments.fulfilled]: (state, action) => {
-      		state.isLoading = false;
-      		state.isError = false;
-      		state.comments= action.payload;
-    },
-    [fetchComments.rejected]: (state, action) => {
-
-      		state.isLoading = false;
-      		state.isError = true;
-      		state.errorMessage = action.error.message;
-      		state.errorStatus = action.error.status
-    }
-
-
-	}
+	extraReducers: (builder) => {
+		builder
+		  .addCase(fetchComments.pending, (state) => {
+			state.isLoading = true;
+			state.isError = false;
+		  })
+		  .addCase(fetchComments.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isError = false;
+			state.comments = action.payload;
+		  })
+		  .addCase(fetchComments.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isError = true;
+			state.errorMessage = action.error.message;
+			state.errorStatus = action.error.status;
+		  });
+	  }
+	  
 
 })
 

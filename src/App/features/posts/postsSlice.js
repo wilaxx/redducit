@@ -1,26 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
+
 const initialState = {
     isLoading: false,
-    posts : [],
+    posts: [],
     isError: false,
     errorMessage: '',
-    errorStatus: ''
+    errorStatus: '',
+    subreddit: '',
+    searchTerm: ''
 }
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
-    try {
         const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error('Failed to fetch posts');
-        }
-        const posts = await response.json();
-        return posts;
-    } catch (error) {
-    	const status = error.status || 'Unknown Status';
-		const message = error.message || 'Unknown Error';
-        throw { status, message };
-    }
+        const json = await response.json();
+        const posts = json.data.children;
+        const postsData = await posts.map(post => post.data);
+        return postsData;  
 });
 
 
@@ -29,27 +25,32 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
 const postsSlice = createSlice({
 	name: 'posts',
 	initialState,
-	extraReducers: {
-		[fetchPosts.pending]: (state) => {
-      		state.isLoading = true;
-      		state.isError = false;
-    },
-    	[fetchPosts.fulfilled]: (state, action) => {
-      		state.isLoading = false;
-      		state.isError = false;
-      		state.posts= action.payload;
-    },
-    [fetchPosts.rejected]: (state, action) => {
-
-      		state.isLoading = false;
-      		state.isError = true;
-      		state.errorMessage = action.error.message;
-      		state.errorStatus = action.error.status
-    }
-
-
-	}
+  reducers: {
+    setSearchTerm: (state, action) => {
+        state.searchTerm = action.payload;
+    }},
+	extraReducers: (builder) => {
+        builder
+          .addCase(fetchPosts.pending, (state) => {
+            state.isLoading = true;
+            state.isError = false;
+          })
+          .addCase(fetchPosts.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isError = false;
+            state.posts = action.payload;
+          })
+          .addCase(fetchPosts.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.errorMessage = action.error.message;
+          });
+      }
+      
 
 })
 
+export const selectPostsState = state => state.posts;
+export const selectSubreddit = state => state.posts
+export const { setSearchTerm } = postsSlice.actions;
 export default postsSlice.reducer

@@ -1,0 +1,12 @@
+.SearchBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Add more styles here */
+}
+
+/* .SearchBar input:focus {
+    outline: 2px solid blue; 
+    outline-offset: 0px; 
+  } */
+  
