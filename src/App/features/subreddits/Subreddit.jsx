@@ -13,9 +13,9 @@ const Subreddit = ({subreddit}) => {
     return (
             <li className="Subreddit">
                 <button
-                onClick={() => {dispatch(selectSubreddit(subreddit.display_name_prefixed))}}
+                onClick={() => {dispatch(selectSubreddit(subreddit.display_name))}}
                 >
-                    {subreddit.display_name_prefixed}
+                    {subreddit.display_name}
                 </button>
             </li>
     );

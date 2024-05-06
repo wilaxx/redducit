@@ -37,7 +37,7 @@ main > :first-child {
 }
 
 main > :last-child {
-    flex: 30%;
+    flex: 20%;
 }
 
 section {
@@ -53,4 +53,5 @@ article {
     gap: 0.5rem;
     padding: 0.5rem;
     border: 1px solid #ccc;
+    height: fit-content;
 }
