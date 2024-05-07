@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SearchBar.css';
 import { useDispatch } from 'react-redux';
 import { setSearchTerm } from '../features/posts/postsSlice';
+import { HiOutlineSearch } from 'react-icons/hi';
 
 const SearchBar = () => {
     
@@ -27,7 +28,7 @@ const SearchBar = () => {
         }}
             />
             <button 
-            onClick={handleSearch} >Rechercher</button>
+            onClick={handleSearch} > <HiOutlineSearch /> </button>
         </div>
     );
 };

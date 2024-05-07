@@ -1,12 +1,33 @@
 .Subreddit {
-    padding: 20px;
+    height: 5rem;
+    width: 100%;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-.Subreddit li {
-    padding: 10px;
+.Subreddit button {
+    border: none;
+    padding: 0.5rem;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
 }
 
-.Subreddit li button {
-    padding: 1rem;
-    width: 50%;
+.Subreddit button:hover {
+    background-color: #f5f5f5;
+    padding-block: 1px;
+    padding-inline: 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
 }
+
+.Subreddit button img {
+    height: 3rem;
+    width: auto;
+}
+
+

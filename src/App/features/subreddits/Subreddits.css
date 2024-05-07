@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    gap: 2rem;
+    padding: 0.5rem;
+    gap: 1rem;
 }
 
 .Subreddits ul {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-start;
+    gap: 0.5rem;
 }

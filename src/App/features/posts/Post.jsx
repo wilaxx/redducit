@@ -3,15 +3,13 @@ import './Post.css';
 
 const Post = ({post}) => {
    
-    const { title, url, author } = post;
+    const { title, url, author, selftext } = post;
     return (
-        <div>
+        <div className='Post'>
             <h2>{title}</h2>
             <div className="postImgWrapper">
+                <p>{selftext}</p>
                  <img src={url} alt="visuel" />
-                 <br />
-                 <br />
-                 <div>l'url est : {url}</div>
             </div>
            
             <p>Par {author}</p>

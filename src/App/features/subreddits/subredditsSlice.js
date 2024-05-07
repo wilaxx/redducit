@@ -16,7 +16,7 @@ export const fetchSubreddits = createAsyncThunk('subreddits/fetchSubreddits', as
             throw new Error('Failed to fetch subreddits');
         }
         const json = await response.json();
-		const subreddits = json.data.children;
+		const subreddits = await json.data.children;
 		const subredditsData = await subreddits.map(subreddit => subreddit.data);
         return subredditsData;
     } catch (error) {

@@ -2,11 +2,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Add more styles here */
+    gap: 0.3rem;
 }
 
-/* .SearchBar input:focus {
-    outline: 2px solid blue; 
-    outline-offset: 0px; 
-  } */
+.SearchBar input {
+    padding: 0.3rem;
+    border: 1px solid #d1c1c1;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+}
+
   
+.SearchBar button {
+    display: flex;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+.SearchBar button svg {
+    font-size: 1.3rem;
+  }
+
+

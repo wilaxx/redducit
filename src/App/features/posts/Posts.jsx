@@ -3,6 +3,7 @@ import Post from './Post.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFilteredSubreddit } from '../subreddits/subredditsSlice.js';
 import { fetchPosts, selectPostsState } from './postsSlice.js';
+import './Posts.css';
 
 const Posts = () => {
    
@@ -41,7 +42,7 @@ const Posts = () => {
 
 
     return (
-        <div>
+        <div className='Posts'>
             {postsData.map(post => <Post key={post.id} post={post} />)}        
         </div>
     );

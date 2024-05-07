@@ -33,25 +33,48 @@ main {
 }
 
 main > :first-child {
-    flex: 70%;
+    flex: 75%;
 }
 
 main > :last-child {
-    flex: 20%;
+    flex: 10%;
 }
 
 section {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    border: 1px solid #ccc;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
+
 }
 
 article {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    border: none;
     height: fit-content;
+}
+
+#scrollToTopButton {
+    position: fixed; /* Position fixe pour rester en bas à droite */
+    bottom: 20px; /* Marge par rapport au bas de la fenêtre */
+    right: 20px; /* Marge par rapport à la droite de la fenêtre */
+    width: 40px; /* Largeur du bouton */
+    height: 40px; /* Hauteur du bouton */
+    border-radius: 50%; /* Rendre le bouton rond */
+    background-color: #333; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    font-size: 24px; /* Taille de la police */
+    border: none; /* Supprimer la bordure */
+    cursor: pointer; /* Curseur pointer au survol */
+    z-index: 9999; /* Assurer que le bouton apparaît au-dessus du contenu */
+    transition: margin-right 2s ease-in-out .5s;
+}
+
+
+#scrollToTopButton.visible {
+    display: block;
 }
