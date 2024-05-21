@@ -8,7 +8,7 @@ const Subreddit = ({subreddit}) => {
     
     const dispatch = useDispatch();
     const subredditsState = useSelector(selectSubredditsState);
-    const { isLoading, isError, errorMessage, errorStatus, selectedSubreddit } = subredditsState;
+    const { isLoading, isError, errorMessage, errorStatus, filteredSubreddit } = subredditsState;
     const subredditsData = subredditsState.subreddits;
 
     const handleImageError = (imgElement) => {
@@ -25,7 +25,11 @@ const Subreddit = ({subreddit}) => {
     return (
             <li className="Subreddit">
                 <button
-                onClick={() => {dispatch(selectSubreddit(subreddit.display_name_prefixed))}}
+                onClick={(e) => {
+                  dispatch(selectSubreddit(subreddit.display_name_prefixed))
+                  window.scrollTo(0, 0);    
+                }}
+                className={`subredditButton ${filteredSubreddit === subreddit.display_name_prefixed ? 'selected' : ''}`}
                 >
                  <img
                 src={
@@ -33,7 +37,6 @@ const Subreddit = ({subreddit}) => {
                   `https://api.adorable.io/avatars/25/${subreddit.display_name}`
                 }
                 alt={`${subreddit.display_name}`}
-                className="subreddit-icon"
                 onError={(e) => handleImageError(e.target)}
               />   {subreddit.display_name}
                 </button>

@@ -1,6 +1,7 @@
 .App {
     display: flex;
     flex-direction: column;
+    
 }
 
 header {
@@ -27,6 +28,7 @@ header div {
 
 main {
     display: flex;
+    /* flex-direction: column-reverse; */
     padding: 1rem;
     gap: 0.5rem;
     
@@ -51,7 +53,7 @@ section {
 article {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 0.5rem;
     padding: 0.5rem;
     border: none;

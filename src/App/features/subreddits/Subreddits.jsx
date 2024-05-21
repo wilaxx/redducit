@@ -34,7 +34,6 @@ const Subreddits = () => {
 
     return (
         <div className='Subreddits'>
-            <h2>Subreddits</h2>
             <ul>
             {subredditsData.map((subreddit) => (<Subreddit key={subreddit.id} subreddit={subreddit} />))}
             </ul> 

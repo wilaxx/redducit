@@ -7,7 +7,6 @@ const initialState = {
     isError: false,
     errorMessage: '',
     errorStatus: '',
-    subreddit: '',
     searchTerm: ''
 }
 

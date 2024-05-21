@@ -4,4 +4,11 @@
     gap: 1rem;
     padding: 0.5rem 1rem;
     border: none;
+    overflow-y: scroll; /* Permet le défilement vertical */
+    scrollbar-width: none; /* Cache la barre de défilement pour les navigateurs qui prennent en charge la propriété */
+    -ms-overflow-style: none;
+}
+
+.Posts::-webkit-scrollbar {
+    display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 }

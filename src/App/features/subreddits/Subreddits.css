@@ -1,14 +1,24 @@
 .Subreddits {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     padding: 0.5rem;
     gap: 1rem;
+    width: 100%;
+    
+}
+
+.Subreddits::-webkit-scrollbar {
+    display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 }
 
 .Subreddits ul {
     display: flex;
+    /* flex-wrap: wrap; */
     flex-direction: column;
-    align-items: flex-start;
     gap: 0.5rem;
+    width: 100%;
+    
 }
+
