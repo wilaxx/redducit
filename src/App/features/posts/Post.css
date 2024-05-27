@@ -30,7 +30,7 @@
 .post-content {
     padding: 0.5rem;
     box-sizing: border-box; /* Ajouté */
-    overflow-wrap: break-word; /* Ajouté pour que le texte ne dépasse pas la largeur du conteneur */
+    word-break: break-word; /* Ajouté pour que le texte ne dépasse pas la largeur du conteneur */
 
 }
 
