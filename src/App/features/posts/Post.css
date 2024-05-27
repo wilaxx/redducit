@@ -68,7 +68,7 @@
 
 .img-single {
     max-width: 100%;
-    height: auto; /* Ajouté pour maintenir les proportions */
+    max-height: auto; /* Ajouté pour maintenir les proportions */
     display: block; /* Ajouté pour éviter les espaces blancs autour des images */
     box-sizing: border-box; /* Ajouté */
 }
@@ -76,7 +76,7 @@
 /* Pour les images multiples, si vous avez une classe dédiée */
 .img-multiple {
     max-width: 100%;
-    height: auto; /* Ajouté pour maintenir les proportions */
+    max-height: auto; /* Ajouté pour maintenir les proportions */
     display: block; /* Ajouté pour éviter les espaces blancs autour des images */
     box-sizing: border-box; /* Ajouté */
 }
