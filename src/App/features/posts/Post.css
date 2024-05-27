@@ -7,6 +7,10 @@
     box-sizing: border-box; /* Ajouté */
 }
 
+.Post p {
+    word-break: break-all;
+}
+
 .post-header {
     display: flex;
     justify-content: space-between;
