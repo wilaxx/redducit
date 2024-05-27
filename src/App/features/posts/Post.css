@@ -4,27 +4,79 @@
     width: 100%;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding: 0.5rem;
-    /* outline: 1px solid #eb9696; */
+    box-sizing: border-box; /* Ajouté */
 }
 
-.postImgWrapper {
-    
-    justify-content: center;
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    background-color: #f5f5f5;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    box-sizing: border-box; /* Ajouté */
 }
 
-.postImgWrapper img {
-    max-width: 100%;
-    max-height: auto;
-    overflow: hidden;
+.votes {
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
 }
 
-.Post p {
+.votes .icon-ups {
+    color: rgb(0, 141, 0);
+}
+
+.post-content {
     padding: 0.5rem;
-    word-break: break-word;
+    box-sizing: border-box; /* Ajouté */
+    overflow-wrap: break-word; /* Ajouté pour que le texte ne dépasse pas la largeur du conteneur */
+
 }
 
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    box-sizing: border-box; /* Ajouté */
+}
+
+.comments {
+    display: flex;
+    gap: 0.2rem;
+    padding: 0.1rem;
+    align-items: center;
+}
+
+.comments .icon-comments {
+    color: blue;
+    align-self: center;
+}
+
+.author {
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.1rem;
+    align-items: center;
+}
+
+.icon-author {
+    color: rgb(179, 42, 7);
+}
+
+.img-single {
+    max-width: 100%;
+    height: auto; /* Ajouté pour maintenir les proportions */
+    display: block; /* Ajouté pour éviter les espaces blancs autour des images */
+    box-sizing: border-box; /* Ajouté */
+}
+
+/* Pour les images multiples, si vous avez une classe dédiée */
+.img-multiple {
+    max-width: 100%;
+    height: auto; /* Ajouté pour maintenir les proportions */
+    display: block; /* Ajouté pour éviter les espaces blancs autour des images */
+    box-sizing: border-box; /* Ajouté */
+}

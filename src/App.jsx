@@ -16,8 +16,8 @@ const App = () => {
     }, []);
 
     const handleScroll = () => {
-        // Afficher le bouton lorsque l'utilisateur commence à faire défiler vers le bas
-        if (window.scrollY > 100) { // Vous pouvez ajuster cette valeur selon vos besoins
+       
+        if (window.scrollY > 100) { 
             setShowScrollButton(true);
         } else {
             setShowScrollButton(false);
@@ -25,16 +25,15 @@ const App = () => {
     };
 
     const scrollToTop = () => {
-        // Faites défiler vers le haut de la page lors du clic sur le bouton
         window.scrollTo({
             top: 0,
-            behavior: 'smooth' // Faites défiler en douceur
+            behavior: 'smooth' 
         });
     };
 
     return (
         <div className="App">
-            <header>
+            <header className='app-header'>
                 <div className="headerleft">
                     <h1>Reddit</h1>
                 </div>
@@ -47,12 +46,12 @@ const App = () => {
               
             </header>
             <main>
-                <section>
+                <section className='app-section'>
                     <Posts />
                 </section>
-                <article>
+                <aside>
                     <Subreddits />
-                </article>
+                </aside>
             </main>
 
             {showScrollButton && (

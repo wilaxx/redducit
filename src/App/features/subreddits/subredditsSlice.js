@@ -30,7 +30,7 @@ const subredditsSlice = createSlice({
 	initialState,
 	reducers: {
 		selectSubreddit: (state, action) => {
-			state.filteredSubreddit = action.payload; // Met à jour le subreddit sélectionné avec la valeur de l'action payload
+			state.filteredSubreddit = action.payload;
 		  }
 	},
 	extraReducers: (builder) => {
@@ -57,4 +57,4 @@ const subredditsSlice = createSlice({
 export const { selectSubreddit } = subredditsSlice.actions;
 export const selectSubredditsState = state => state.subreddits;
 export const selectFilteredSubreddit = state => state.subreddits.filteredSubreddit;
-export default subredditsSlice.reducer
+export default subredditsSlice.reducer;

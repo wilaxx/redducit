@@ -4,7 +4,7 @@
     
 }
 
-header {
+.app-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ header {
 }
 
 
-header div {
+.app-header div {
     flex: 1;
 }
 
@@ -42,7 +42,7 @@ main > :last-child {
     flex: 10%;
 }
 
-section {
+.app-section {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -50,7 +50,7 @@ section {
 
 }
 
-article {
+aside {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
     display: flex;
     flex-direction: row;
