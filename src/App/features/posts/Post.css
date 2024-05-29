@@ -33,8 +33,10 @@
 
 .post-content {
     padding: 0.5rem;
-    box-sizing: border-box; /* Ajouté */
     word-break: break-word; /* Ajouté pour que le texte ne dépasse pas la largeur du conteneur */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 

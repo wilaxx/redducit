@@ -1,33 +1,53 @@
-import React, { useState } from 'react';
+import React from 'react';
 import moment from 'moment';
 import './Post.css';
 import { TiArrowUpOutline } from "react-icons/ti";
 import { MdOutlineMessage } from "react-icons/md";
 import { FaUserPen } from "react-icons/fa6";
+import { ImNewTab } from "react-icons/im";
 
 const Post = ({post}) => {
    
-    const { title, author, num_comments, ups, created_utc, permalink, selftext, preview, media_metadata, url_overridden_by_dest } = post;
-    const [currentImage, setCurrentImage] = useState(0);
+    const { title, author, num_comments, ups, created_utc, permalink, selftext_html, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail } = post;
+
+    const isImageUrl = (url) => {
+        return url && url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    };
+
+    const getImageUrl = () => {
+        if (isImageUrl(url_overridden_by_dest)) {
+            return url_overridden_by_dest;
+        } else if (isImageUrl(url)) {
+            return url;
+        } else if (isImageUrl(thumbnail)) {
+            return thumbnail;
+        } else {
+            return null;
+        }
+    };
+
+    const decodeHTML = (html) => {
+        var txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
 
     const renderContent = () => {
         let content = [];
+        const imageUrl = getImageUrl();
 
-        if (selftext) {
-            content.push(<p key="selftext">{selftext}</p>);
+        if (selftext_html) {
+            const decodedHTML = decodeHTML(selftext_html);
+            content.push(<div key={`${id}-selftext`} dangerouslySetInnerHTML={{ __html: decodedHTML }} />);
         }
 
-        if (url_overridden_by_dest) {
-            content.push(<img key="singleImage" className='img-single' src={url_overridden_by_dest} alt={title} />);
+        if (imageUrl) {
+            content.push(<img key={`${id}-singleImage`} className='img-single' src={imageUrl} alt={title} />);
         }
 
-        if (media_metadata) {
-            const images = Object.values(media_metadata);
+        if (preview || media_metadata) {
             content.push(
-                <div key="multipleImages">
-                    <img src={images[currentImage].s.u} className='img-multiple' alt={title} />
-                    <button onClick={() => setCurrentImage((currentImage + 1) % images.length)}>Next image</button>
-                </div>
+                <a key={`${id}-link`} href={`https://www.reddit.com${permalink}`} target="_blank" rel="noopener noreferrer">View original post on Reddit</a>
             );
         }
 
@@ -35,7 +55,7 @@ const Post = ({post}) => {
     };
 
     return (
-        <article className='Post'>
+        <article className='Post' key={id}>
 
             <header className="post-header">
                 <h2>{title}</h2>
@@ -45,7 +65,7 @@ const Post = ({post}) => {
             </header>
 
             <section className="post-section">
-                <div className='content'>
+                <div className='post-content'>
                     {renderContent()}
                 </div>
             </section>
