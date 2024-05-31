@@ -1,6 +1,7 @@
 .App {
     display: flex;
     flex-direction: column;
+    /* width: 100%; */
     
 }
 
@@ -28,18 +29,22 @@
 
 main {
     display: flex;
-    /* flex-direction: column-reverse; */
+    /* flex-direction: row-reverse; */
     padding: 1rem;
-    gap: 0.5rem;
+    gap: 1rem;
+    /* justify-content: space-between; */
     
 }
 
 main > :first-child {
     flex: 75%;
+    min-width: 0;
 }
 
 main > :last-child {
-    flex: 10%;
+    flex: 15%;
+    min-width: 0;
+
 }
 
 .app-section {
@@ -58,6 +63,7 @@ aside {
     padding: 0.5rem;
     border: none;
     height: fit-content;
+    word-break: break-word;
 }
 
 #scrollToTopButton {
@@ -79,4 +85,12 @@ aside {
 
 #scrollToTopButton.visible {
     display: block;
+}
+
+.subname {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%; /* Adjust this value as needed */
+    display: inline-block; /* Ensure the span does not take up more space than necessary */
 }

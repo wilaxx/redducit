@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectSubredditsState, selectSubreddit } from './subredditsSlice';
+import { setSearchTerm } from '../posts/postsSlice';
 import './Subreddit.css';
 
 const Subreddit = ({subreddit}) => {
@@ -26,7 +27,10 @@ const Subreddit = ({subreddit}) => {
             <li className="Subreddit">
                 <button
                 onClick={(e) => {
+                  const search = document.getElementById('searchbar');
+                  search.value = '';
                   dispatch(selectSubreddit(subreddit.display_name_prefixed))
+                  dispatch(setSearchTerm(''))
                   window.scrollTo(0, 0);    
                 }}
                 className={`subredditButton ${filteredSubreddit === subreddit.display_name_prefixed ? 'selected' : ''}`}
@@ -38,7 +42,7 @@ const Subreddit = ({subreddit}) => {
                 }
                 alt={`${subreddit.display_name}`}
                 onError={(e) => handleImageError(e.target)}
-              />   {subreddit.display_name}
+              />  <span className='subname'>{subreddit.display_name}</span> 
                 </button>
             </li>
     );

@@ -50,6 +50,5 @@ const postsSlice = createSlice({
 })
 
 export const selectPostsState = state => state.posts;
-export const selectSubreddit = state => state.posts
 export const { setSearchTerm } = postsSlice.actions;
 export default postsSlice.reducer

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './SearchBar.css';
 import { useDispatch } from 'react-redux';
 import { setSearchTerm } from '../features/posts/postsSlice';
+import { selectSubreddit } from '../features/subreddits/subredditsSlice';
 import { HiOutlineSearch } from 'react-icons/hi';
 
 const SearchBar = () => {
@@ -11,12 +12,14 @@ const SearchBar = () => {
 
     const handleSearch = () => {
         dispatch(setSearchTerm(termToDispatch));
+        dispatch(selectSubreddit(''));
     };
 
 
     return (
         <div className='SearchBar'>
-            <input 
+            <input
+            id="searchbar" 
             type="text"
             value={termToDispatch} 
             placeholder="Rechercher..."

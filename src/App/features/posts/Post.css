@@ -49,6 +49,27 @@
     box-sizing: border-box; /* Ajouté */
 }
 
+.post-footer > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.post-footer .author {
+   justify-content: flex-start;
+}
+
+
+.post-footer .created-date {
+    justify-content: center;
+    align-content: center;
+ }
+
+
+.post-footer .comments {
+    justify-content: flex-end;
+ }
+
 .comments {
     display: flex;
     gap: 0.2rem;
@@ -59,6 +80,9 @@
 .comments .icon-comments {
     color: blue;
     align-self: center;
+    /* padding-top: 0.2rem;
+    box-sizing: content-box; */
+    margin-top: 0.2rem;
 }
 
 .author {
