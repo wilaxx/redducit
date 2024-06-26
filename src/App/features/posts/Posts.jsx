@@ -11,8 +11,11 @@ const Posts = () => {
     const postsState = useSelector(selectPostsState);
     const selectedSubreddit = useSelector(selectFilteredSubreddit);
     const { isLoading, isError, errorMessage, errorStatus } = postsState;
+
     const postsData = postsState.posts;
-    const searchTerm = useSelector(state => state.posts.searchTerm);
+    
+
+    let searchTerm = useSelector(state => state.posts.searchTerm);
     
 
     useEffect(() => {
@@ -20,6 +23,7 @@ const Posts = () => {
         dispatch(fetchPosts(POSTS_URL));
     }, [selectedSubreddit, dispatch])
 
+    
     useEffect(() => {
         if (searchTerm !== '') {
             const SEARCH_URL = `https://www.reddit.com/search.json?q=${searchTerm}`;
@@ -38,8 +42,6 @@ const Posts = () => {
     if(postsData.length === 0) {
         return <div>No posts available</div>
     }
-
-
 
     return (
         <div className='Posts'>

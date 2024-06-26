@@ -8,6 +8,15 @@ const App = () => {
 
     const [showScrollButton, setShowScrollButton] = useState(false);
 
+    const handleScroll = () => {
+       
+        if (window.scrollY > 200) { 
+            setShowScrollButton(true);
+        } else {
+            setShowScrollButton(false);
+        }
+    };
+
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
         return () => {
@@ -15,14 +24,7 @@ const App = () => {
         };
     }, []);
 
-    const handleScroll = () => {
-       
-        if (window.scrollY > 100) { 
-            setShowScrollButton(true);
-        } else {
-            setShowScrollButton(false);
-        }
-    };
+   
 
     const scrollToTop = () => {
         window.scrollTo({
@@ -35,16 +37,16 @@ const App = () => {
         <div className="App">
             <header className='app-header'>
                 <div className="headerleft">
-                    <h1>Reddit</h1>
+                    <h1 onClick={() => window.location.reload()}>Redducit</h1>
                 </div>
                 <div className="headercenter">
                     <SearchBar />
                 </div>
                 <div className="headerright">
 
-                </div>
-              
+                </div>  
             </header>
+            
             <main>
                 <section className='app-section'>
                     <Posts />

@@ -1,0 +1,15 @@
+.Comments {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0.5rem 3rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+   /* background-color: #d5d5b6; */
+   
+}
+
+.Comments::-webkit-scrollbar {
+    display: none;
+}
