@@ -3,6 +3,7 @@ import moment from 'moment';
 import './Post.css';
 import { TiArrowUpOutline } from "react-icons/ti";
 import { MdOutlineMessage } from "react-icons/md";
+import { TbMessage2, TbMessage2Off } from "react-icons/tb";
 import { FaUserPen } from "react-icons/fa6";
 import { ImNewTab } from "react-icons/im";
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,10 +13,9 @@ import Comments from '../comments/Comments.jsx';
 
 const Post = ({post}) => {
    
-    const { title, author, num_comments, ups, created_utc, permalink, selftext_html, secure_media, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail } = post;
+    const { title, author, num_comments, ups, created_utc, permalink, selftext_html, secure_media, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail, loadingComments } = post;
     const [showComments, setShowComments] = useState(false);
-
-
+    // const { loadingComments } = useSelector(selectPostsState);
     const dispatch = useDispatch();
    
 
@@ -65,10 +65,19 @@ const Post = ({post}) => {
 
     const handleCommentsClick = () => {
         if (!showComments) {
-            dispatch(fetchComments(post.permalink));
+            dispatch(fetchComments(permalink));
         }
         setShowComments(!showComments);
     };
+
+    const renderIconComments = () => {
+        if (!showComments || loadingComments) {
+            return <TbMessage2 className="icon-comments" onClick={handleCommentsClick} />
+        } else {
+            return <TbMessage2Off className="icon-comments" onClick={handleCommentsClick} />
+    }
+    };
+
 
     return (
     <>
@@ -95,13 +104,14 @@ const Post = ({post}) => {
                 <div className='author'><FaUserPen className="icon-author" /> {author}</div>
                 <div className='created-date'>{moment.unix(created_utc).fromNow()}</div>
                 <div className='comments'>
-                <MdOutlineMessage className="icon-comments" onClick={handleCommentsClick}  />
+                    {renderIconComments()}
                 <span className='comment-count'>{num_comments}</span>
             </div>
                 
             </footer>
+            {showComments && <Comments postId={id} />}
         </article>
-        {showComments && <Comments postId={id} />}
+      
     </>
     );
 }

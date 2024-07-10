@@ -23,8 +23,8 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
           ...post,
           showingComments: false,
           comments: [],
-          loadingComments: false,
-          errorComments: false
+          errorComments: false,
+          loadingComments: false
       }));
 
         return postsData;  
@@ -36,7 +36,10 @@ export const fetchComments = createAsyncThunk(
     dispatch(setLoadingComments(true));
     const response = await fetch(`https://www.reddit.com${permalink}.json`);
     const json = await response.json();
-    const commentsData = json[1].data.children.map((c) => c.data);
+    const children = json[1].data.children;
+    const filteredChildren = children[children.length - 1].kind === "more" ? children.slice(0, -1) : children;
+    
+    const commentsData = filteredChildren.map((c) => c.kind === "t1" ? c.data : null).filter(Boolean);
     dispatch(setComments({ postId: permalink.split('/')[4], comments: commentsData }));
     dispatch(setLoadingComments(false));
     dispatch(toggleComments(permalink.split('/')[4]));
