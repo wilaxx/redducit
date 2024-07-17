@@ -16,7 +16,7 @@ const Comments = ({ postId }) => {
         return <div>Loading comments...</div>
     }
 
-    if (post.errorComments) {
+    if (post.errorComments !== false) {
         return <div>Error loading comments</div>
     }
 

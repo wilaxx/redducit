@@ -7,7 +7,8 @@ const initialState = {
     isError: false,
     errorMessage: '',
     errorStatus: '',
-    searchTerm: ''
+    searchTerm: '',
+    selectedCommentId: null,
 }
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
@@ -39,7 +40,7 @@ export const fetchComments = createAsyncThunk(
     const children = json[1].data.children;
     const filteredChildren = children[children.length - 1].kind === "more" ? children.slice(0, -1) : children;
     
-    const commentsData = filteredChildren.map((c) => c.kind === "t1" ? c.data : null).filter(Boolean);
+    const commentsData = filteredChildren.map((c) => c.data);
     dispatch(setComments({ postId: permalink.split('/')[4], comments: commentsData }));
     dispatch(setLoadingComments(false));
     dispatch(toggleComments(permalink.split('/')[4]));
@@ -54,7 +55,7 @@ const postsSlice = createSlice({
 	name: 'posts',
 	initialState,
   reducers: {
-    setSearchTerm: (state, action) => {
+      setSearchTerm: (state, action) => {
         state.searchTerm = action.payload;
       },
       setLoadingComments: (state, action) => {
@@ -71,6 +72,9 @@ const postsSlice = createSlice({
         if (post) {
             post.showingComments = !post.showingComments;
         }
+      },
+      selectComment: (state, action) => {
+        state.selectedCommentId = action.payload;
       }
     },
 	extraReducers: (builder) => {
@@ -117,5 +121,5 @@ const postsSlice = createSlice({
 
 export const selectPostsState = state => state.posts;
 export const selectSearchTerm = state => state.posts.searchTerm;
-export const { setSearchTerm, setLoadingComments, setComments, toggleComments } = postsSlice.actions;
+export const { setSearchTerm, setLoadingComments, setComments, toggleComments, selectComment } = postsSlice.actions;
 export default postsSlice.reducer
