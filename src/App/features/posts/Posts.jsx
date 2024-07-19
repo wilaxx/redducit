@@ -13,13 +13,14 @@ const Posts = () => {
     const { isLoading, isError, errorMessage, errorStatus } = postsState;
 
     const postsData = postsState.posts;
+
     
 
     let searchTerm = useSelector(state => state.posts.searchTerm);
     
 
     useEffect(() => {
-        const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json`;
+        const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json?limit=100`;
         dispatch(fetchPosts(POSTS_URL));
     }, [selectedSubreddit, dispatch])
 
