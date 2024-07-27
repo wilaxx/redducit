@@ -18,7 +18,6 @@ const Comment = ({ comment }) => {
         dispatch(selectComment(comment.id));
     };
 
-
     const showIconReplies = (replies) => {
         if (replies !== "" && replies.data && replies.data.children && replies.data.children.length > 0) {
             if (showReplies) {
@@ -31,12 +30,12 @@ const Comment = ({ comment }) => {
     };
 
 
-  
   // Fonction pour rendre les réponses récursivement, y compris la gestion des réponses de type "more"
     const renderReplies = (replies) => {
-      if (showReplies && replies !== ""  && replies.data && replies.data.children && replies.data.children.length > 0) {
+      if (showReplies && replies !== "" && replies.data && replies.data.children && replies.data.children.length > 0) {
           return replies.data.children.map((reply) => {
               if (reply.kind === "more") {
+                console.dir(reply);
                   return;
               } else {
                   return <Comment key={reply.data.id} comment={reply.data} />;

@@ -11,6 +11,7 @@ const initialState = {
     selectedCommentId: null,
 }
 
+
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
         const response = await fetch(url, {
           headers: {

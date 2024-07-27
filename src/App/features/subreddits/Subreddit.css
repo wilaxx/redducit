@@ -18,13 +18,17 @@
     /* justify-content: flex-start; */
     align-items: center;
     gap: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(62, 62, 68);
 }
 
 .subredditButton:hover {
     background-color: #61bde749;
     border-color: buttonborder;
     outline: 2px solid buttonborder;
-    font-weight: bold;
+    color: black;
+    
 }
 
 .Subreddit button img {
@@ -40,6 +44,7 @@
     border-style: outset;
     border-color: buttonborder;
     font-weight: bolder;
+    color: black;
 }  
 
 .subredditButton.selected:hover {
