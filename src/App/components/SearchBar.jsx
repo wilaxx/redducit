@@ -17,6 +17,7 @@ const SearchBar = () => {
     const handleSearch = () => {
         dispatch(setSearchTerm(inputValue));
         dispatch(selectSubreddit(''));
+        window.scrollTo(0, 0);
     };
 
     return (

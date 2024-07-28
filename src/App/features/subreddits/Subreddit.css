@@ -11,13 +11,13 @@
 .subredditButton {
     border-radius: 1rem; 
     border: none;
-    padding: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0.8rem;
     height: 100%;
     width: 100%;
     display: flex;
     /* justify-content: flex-start; */
     align-items: center;
-    gap: 1rem;
+    gap: 0.7rem;
     font-size: 1rem;
     font-weight: bold;
     color: rgb(62, 62, 68);
@@ -27,12 +27,13 @@
     background-color: #61bde749;
     border-color: buttonborder;
     outline: 2px solid buttonborder;
-    color: black;
+    color: rgb(222, 221, 222);
+    text-transform: uppercase;
     
 }
 
 .Subreddit button img {
-    height: 2rem;
+    height: 3rem;
     width: auto;
     border-radius: 50%;
 }
