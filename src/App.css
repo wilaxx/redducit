@@ -9,25 +9,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: beige;
-    padding: 1rem;
+    background:
+        linear-gradient(90deg, rgb(197, 137, 64), rgba(66, 34, 136, 0.819)),
+        linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    padding: 0.4rem;
+    height: 15vh;
     top: 0px;
     position: sticky;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); */
     z-index: 1000;
+
 }
 
-
-.app-header div {
-    flex: 1;
+.app-header:focus-within {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    background:
+        linear-gradient(90deg, rgb(197, 137, 64), rgb(66, 34, 136));   
 }
 
 .App h1 {
     cursor: default;
-    padding: 0.2rem 1rem;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 1rem;
-
+    padding: 0.6rem 1.1rem;
+    box-shadow: -5px 3px 0 3px rgba(66, 34, 136, 0.819);
+    border-radius: 2rem;
+    border-top: 1px solid rgb(168, 152, 174);
+    font-size: 1.7rem;
 }
 
 .App h1:hover {
@@ -39,33 +45,40 @@
 }
 
 .headerleft {
+    flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    padding-left: 2rem;
 }
 
 .headercenter {
+    flex: 2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.headerright {
+    flex: 1;
+}
+
 main {
     display: flex;
     /* flex-direction: row-reverse; */
-    padding: 1rem;
+    padding: 1rem 6rem;
     gap: 5rem;
-    /* justify-content: space-between; */
-    
+    background:
+        linear-gradient(90deg, rgb(197, 137, 64), rgba(66, 34, 136, 0.819))
 }
 
 main > :first-child {
-    flex: 75%;
+    flex: 75vw;
     min-width: 0;
 }
 
 main > :last-child {
-    flex: 15%;
+    flex: 15vw;
     min-width: 0;
 
 }
@@ -73,18 +86,18 @@ main > :last-child {
 .app-section {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem 5rem;
+    /* padding: 0.5rem 0; */
     gap: 0.5rem;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
 
 aside {
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; 
+    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;  */
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-    padding: 0.5rem;
-    border: none;
+    /* padding: 0.5rem; */
+    /* border: none; */
     height: fit-content;
     word-break: break-word;
 }

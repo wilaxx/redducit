@@ -3,25 +3,55 @@
     align-items: center;
     justify-content: center;
     gap: 0.3rem;
-}
-
-.SearchBar input {
     padding: 0.3rem;
-    border: 1px solid #d1c1c1;
-    border-radius: 0.3rem;
-    font-size: 0.9rem;
+    position: relative;
+    width: 75%;
 }
 
-  
+
+ input {
+    padding: 0.3rem;
+    /* border: 1px solid #d1c1c1; */
+    height: 6vh;
+    width: 100%;
+    outline: none;
+    padding-left: 1.2rem;
+    border-radius: 45px;
+    background: none;
+    border: 1px solid rgb(168, 152, 174);
+    font-size: 1.3rem;
+
+}
+
+input::placeholder {
+  font-size: 1.3rem;
+  transform: translateY(0.2rem);
+  font-style: italic;
+  font-weight: bold;
+  color: rgb(64, 63, 63);
+}
+
+input:focus::placeholder {
+  font-size: 1.3rem;
+  transform: translateY(0.2rem);
+}
+input:focus {
+  outline: 2px solid rgb(189, 172, 196);
+  color: rgb(66, 34, 136);
+  font-size: 1.3rem;
+}
+
 .SearchBar button {
     display: flex;
-    background: none;
+    position: absolute;
+    right: 1.2rem;
     border: none;
     cursor: pointer;
+    background: none;
   }
 
 .SearchBar button svg {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
 
