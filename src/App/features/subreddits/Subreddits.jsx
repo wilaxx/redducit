@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Subreddit from './Subreddit';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSubredditsState, selectFilteredSubreddit } from './subredditsSlice';
+import { selectSubredditsState } from './subredditsSlice';
 import { fetchSubreddits } from './subredditsSlice';
 import './Subreddits.css';
 
@@ -18,24 +18,24 @@ const Subreddits = () => {
 
     useEffect(() => {
         dispatch(fetchSubreddits('https://www.reddit.com/subreddits.json'));
-    }, []); 
+    }, [dispatch]); 
 
     if(isLoading) {
-        return <div>Loading...</div>
+        return;
     }
 
     if(isError) {
         return <div>Error: {errorMessage} {errorStatus}</div>
     }   
 
-    if(subredditsData.length === 0) {
+    if(!Array.isArray(subredditsData) || subredditsData.length === 0) {
         return <div>No subreddits available</div>
     }   
 
     return (
         <div className='Subreddits'>
             <ul>
-            {subredditsData.map((subreddit) => (<Subreddit key={subreddit.id} subreddit={subreddit} />))}
+            {subredditsData ? subredditsData.map((subreddit) => (<Subreddit key={subreddit.id} subreddit={subreddit} />)) : null}
             </ul> 
         </div>
     );

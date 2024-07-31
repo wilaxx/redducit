@@ -43,7 +43,6 @@ const App = () => {
                     <SearchBar />
                 </div>
                 <div className="headerright">
-
                 </div>  
             </header>
             

@@ -12,6 +12,23 @@ const Subreddit = ({subreddit}) => {
     const { isLoading, isError, errorMessage, errorStatus, filteredSubreddit } = subredditsState;
     const subredditsData = subredditsState.subreddits;
 
+    const anime_subreddit = () => {
+      document.querySelectorAll('.Subreddit button').forEach(item => {
+        item.addEventListener('click', function() {
+            const itemClone = this.cloneNode(true);
+            itemClone.classList.add('header-item');
+            document.querySelector('.headerright').replaceChild(itemClone);
+    
+            // Optionnel: ajouter une animation CSS ou transition pour le déplacement
+            this.classList.add('clicked');
+            
+            // Retirer l'élément original après l'animation si nécessaire
+            setTimeout(() => this.remove(), 300); // durée de l'animation
+        });
+    });
+    
+    };
+
     const handleImageError = (imgElement) => {
         // Créer un nouvel élément img avec le SVG fourni comme source
         const svgElement = document.createElement('img');
@@ -24,14 +41,15 @@ const Subreddit = ({subreddit}) => {
     };
 
     return (
-            <li className="Subreddit">
+            <li className="Subreddit slide-in-elliptic-right-fwd">
                 <button
                 onClick={(e) => {
                   const search = document.getElementById('searchbar');
                   search.value = '';
                   dispatch(selectSubreddit(subreddit.display_name_prefixed))
                   dispatch(setSearchTerm(''))
-                  window.scrollTo(0, 0);    
+                  window.scrollTo(0, 0);
+                  anime_subreddit();    
                 }}
                 className={`subredditButton ${filteredSubreddit === subreddit.display_name_prefixed ? 'selected' : ''}`}
                 >
@@ -42,7 +60,7 @@ const Subreddit = ({subreddit}) => {
                 }
                 alt={`${subreddit.display_name}`}
                 onError={(e) => handleImageError(e.target)}
-              />  <span className='subname'>{subreddit.display_name}</span> 
+              />  <span className='subname animate__animated animate__zoomInRight animate__slower'>{subreddit.display_name}</span> 
                 </button>
             </li>
     );

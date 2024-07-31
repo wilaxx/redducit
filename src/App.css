@@ -3,46 +3,66 @@
     flex-direction: column;
     /* width: 100%; */
     
+    
 }
 
 .app-header {
     display: flex;
     justify-content: center;
+    /* color: rgba(210, 213, 227, 0.637); */
     align-items: center;
     background:
-        linear-gradient(90deg, rgb(197, 137, 64), rgba(66, 34, 136, 0.819)),
-        linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    linear-gradient(70deg, rgb(197, 137, 64), rgba(46, 0, 148, 0.819)),
+    linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0.8) 75%, rgba(255, 255, 255, 0.5) 100%);
     padding: 0.4rem;
-    height: 15vh;
+    height: 10vh;
     top: 0px;
     position: sticky;
     /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); */
     z-index: 1000;
 
 }
-
+/* 
 .app-header:focus-within {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  
     background:
-        linear-gradient(90deg, rgb(197, 137, 64), rgb(66, 34, 136));   
+        linear-gradient(90deg, rgb(197, 137, 64), rgba(66, 34, 136, 0.819));   
+} */
+
+.App:has(aside:hover) section {
+   /* overflow-y: unset; */
 }
 
-.App h1 {
+.App:has(aside:hover) section {
+    pointer-events: none;
+}
+
+.headerleft h1 {
     cursor: default;
     padding: 0.6rem 1.1rem;
-    box-shadow: -5px 3px 0 3px rgba(66, 34, 136, 0.819);
-    border-radius: 2rem;
-    border-top: 1px solid rgb(168, 152, 174);
+    border-radius: 20px;
     font-size: 1.7rem;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px -6px 6px 0px inset, 
+                rgba(0, 0, 0, 0.05) 0px -9px 7.5px 0px inset, 
+                rgba(0, 0, 0, 0.04) 0px -20px 10px 0px inset, 
+                rgba(0, 0, 0, 0.03) 0px 0.5px 0.25px, 
+                rgba(0, 0, 0, 0.02) 0px 1px 0.5px, 
+                rgba(0, 0, 0, 0.01) 0px 2px 1px;
+    transition: box-shadow 1s ease-in-out, transform 1s ease-in-out, color 1s ease-in-out;
 }
 
 .App h1:hover {
-    background-color: #D2EBF8;
-    /* outline: 1px solid rgb(204, 204, 247); */
-    /* outline: 2px solid black; */
-    /* border: 1px solid black; */
-   
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+                rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+                rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+                rgba(0, 0, 0, 0.06) 0px 2px 1px, 
+                rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+                rgba(0, 0, 0, 0.09) 0px 8px 4px;
+    color: rgb(190, 190, 190);
+    transform: scale(0.7);
+    cursor: pointer;
 }
+
 
 .headerleft {
     flex: 1;
@@ -61,17 +81,34 @@
 
 .headerright {
     flex: 1;
+    display: flex;
+    justify-content: stretch;
+    /* height: 100%; */
 }
 
 main {
     display: flex;
     /* flex-direction: row-reverse; */
-    padding: 1rem 6rem;
-    gap: 5rem;
+    padding: 1rem 7rem 1rem 6rem;
+    gap: 10rem;
     background:
-        linear-gradient(90deg, rgb(197, 137, 64), rgba(66, 34, 136, 0.819))
+    linear-gradient(90deg, rgb(197, 137, 64), rgba(46, 0, 148, 0.819)),
+    linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    min-height: 90vh; /* 100vh - header height, avoid background to be blank because of little height due to lack of content */
+     flex: 1; /* Occupe tout l'espace disponible après l'en-tête */
+  overflow: hidden; /* Empêche le défilement de la page principale */
 }
 
+/* .App:has(input:focus) aside {
+   display: none;
+} */
+
+
+
+/* .App aside {
+    position: sticky;
+    top: calc(1rem + 10vh);
+} */
 main > :first-child {
     flex: 75vw;
     min-width: 0;
@@ -90,6 +127,8 @@ main > :last-child {
     gap: 0.5rem;
     /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
+
+
 
 aside {
     /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;  */

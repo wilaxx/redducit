@@ -14,19 +14,26 @@ const SearchBar = () => {
         setInputValue(e.target.value);
     };
 
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' 
+        });
+    };
+
     const handleSearch = () => {
         dispatch(setSearchTerm(inputValue));
         dispatch(selectSubreddit(''));
-        window.scrollTo(0, 0);
+        scrollToTop();
     };
 
     return (
         <div className='SearchBar'>
             <input
             id="searchbar" 
-            type="text"
+            type="search"
             value={inputValue} 
-            placeholder="Rechercher..."
+            placeholder="   type in word or sentence to search ..."
             onChange={onSearchTermChange} 
             onKeyDown={(e) => {
             if (e.key === 'Enter') {

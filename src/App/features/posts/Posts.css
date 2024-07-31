@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    padding: 0.5rem 5rem;
+    padding: 0.5rem 3rem 0.5rem 1rem;
     /* border: none; */
     overflow-y: scroll; /* Permet le défilement vertical */
     scrollbar-width: none; /* Cache la barre de défilement pour les navigateurs qui prennent en charge la propriété */
@@ -13,4 +13,31 @@
 .Posts::-webkit-scrollbar {
     display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 }
+
+
+
+.post-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+
+.spinner {
+    font-size: 13rem;
+    animation: spin 1s ease-out infinite;
+}
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        50% {
+            transform: rotate(180deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        
+    }
 

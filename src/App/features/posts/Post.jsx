@@ -41,13 +41,23 @@ const Post = ({post}) => {
         return txt.value;
     };
 
+    const addTargetBlankToLinks = (htmlString) => {
+        // Utilise une expression régulière pour trouver les balises <a> sans l'attribut target
+        return htmlString.replace(/<a\s+(?![^>]*\btarget=)[^>]*>/gi, (match) => {
+            // Ajoute l'attribut target="_blank" à chaque balise <a>
+            return match.replace('<a', '<a target="_blank"');
+        });
+    };
+
+
     const renderContent = () => {
         let content = [];
         const imageUrl = getImageUrl();
 
         if (selftext_html) {
             const decodedHTML = decodeHTML(selftext_html);
-            content.push(<div key={`${id}-selftext`} dangerouslySetInnerHTML={{ __html: decodedHTML }} />);
+            const updatedHTML = addTargetBlankToLinks(decodedHTML);
+            content.push(<div key={`${id}-selftext`} className='selftext_html' dangerouslySetInnerHTML={{ __html: updatedHTML }} />);
         }
 
         if (imageUrl) {
@@ -63,11 +73,20 @@ const Post = ({post}) => {
         return content.length > 0 ? content : null;
     };
 
-    const handleCommentsClick = () => {
+    const handleCommentsClick = (e) => {
         if (!showComments) {
             dispatch(fetchComments(permalink));
         }
-        setShowComments(!showComments);
+        const parent = e.target.parentElement.getBoundingClientRect();
+        const headerHeight = document.querySelector('.app-header').offsetHeight;
+        const scrollToPosition = parent.top + window.scrollY - headerHeight - 5;
+        if (!showComments) {
+        window.scrollTo({
+            top: scrollToPosition,
+            behavior: 'smooth'
+        });
+    }
+    setShowComments(!showComments);
     };
 
     const renderIconComments = () => {
@@ -81,17 +100,13 @@ const Post = ({post}) => {
 
     return (
     <>
-        <article className='Post' key={id}>
+        <article className='Post scale-in-center' key={id}>
 
             <header className="post-header">
                 <h2>{title}</h2>
-                <div className='votes'>
                 <a key={`${id}-link`} href={`https://www.reddit.com${permalink}`} target="_blank" rel="noopener noreferrer">
                     <ImNewTab className='icon-newtab' />
                 </a>
-                    
-                <TiArrowUpOutline className='icon-ups' />
-                    {ups} </div>
             </header>
 
             <section className="post-section">
@@ -103,10 +118,14 @@ const Post = ({post}) => {
             <footer className='post-footer'>
                 <div className='author'><FaUserPen className="icon-author" /> {author}</div>
                 <div className='created-date'>{moment.unix(created_utc).fromNow()}</div>
+                <div className='votes'>  
+                <TiArrowUpOutline className='icon-ups' />
+                    {ups} 
+                </div>
                 <div className='comments'>
                     {renderIconComments()}
                 <span className='comment-count'>{num_comments}</span>
-            </div>
+                </div>
                 
             </footer>
             {showComments && <Comments postId={id} />}

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Post from './Post.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectFilteredSubreddit } from '../subreddits/subredditsSlice.js';
 import { fetchPosts, selectPostsState } from './postsSlice.js';
 import './Posts.css';
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 const Posts = () => {
    
@@ -19,9 +20,10 @@ const Posts = () => {
     let searchTerm = useSelector(state => state.posts.searchTerm);
     
 
+
     useEffect(() => {
-        const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json?limit=100`;
-        dispatch(fetchPosts(POSTS_URL));
+        const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json`;
+            dispatch(fetchPosts(POSTS_URL));
     }, [selectedSubreddit, dispatch])
 
     
@@ -33,7 +35,9 @@ const Posts = () => {
     }, [searchTerm, dispatch]);
 
     if(isLoading) {
-        return <div>Loading...</div>
+        return <div className='post-loading'>
+            <LiaSpinnerSolid className='spinner' />
+        </div>
     }
 
     if(isError) {

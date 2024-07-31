@@ -3,9 +3,14 @@
     flex-direction: column;
     width: 100%;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    padding: 0.5rem;
+    padding: 1rem;
     box-sizing: border-box;
     background-color: #f8f8e7;
+     background:
+    linear-gradient(70deg, rgb(179, 176, 174), rgba(26, 22, 36, 0.819));
+    border-top: 1px solid #d5d5b6;
+    border-left: 1px solid #d5d5b6;
+    border-radius: 20px;
 }
 
 .Comment .author {
@@ -23,5 +28,5 @@
 }
 
 .Comment--highlighted {
-    border: 2px solid #007bff; /* Exemple de couleur, ajustez selon vos besoins */
+    border: 2px solid #e5f2ff; /* Exemple de couleur, ajustez selon vos besoins */
 }
