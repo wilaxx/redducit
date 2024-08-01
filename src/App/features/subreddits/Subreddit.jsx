@@ -48,8 +48,7 @@ const Subreddit = ({subreddit}) => {
                   search.value = '';
                   dispatch(selectSubreddit(subreddit.display_name_prefixed))
                   dispatch(setSearchTerm(''))
-                  window.scrollTo(0, 0);
-                  anime_subreddit();    
+                  window.scrollTo(0, 0);    
                 }}
                 className={`subredditButton ${filteredSubreddit === subreddit.display_name_prefixed ? 'selected' : ''}`}
                 >

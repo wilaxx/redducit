@@ -8,21 +8,25 @@
     border-radius: 0.5rem;
 }
 
-
+.Comment .Comment {
+    margin-bottom: 0.4rem;
+}
 .Post:hover {
-    background-color: rgb(156, 149, 157);
+    /* background-color: rgb(156, 149, 157); */
     box-shadow: none;
     outline: 2px solid rgb(186, 187, 198);
 }
 
-.Post:hover .icon-newtab {
-    color: rgb(50, 50, 50);
-}
 
 .Post:hover .icon-comments {
     color: rgb(85, 255, 66);
 }
 
+.Post:hover:has(.Comment:hover) {
+    background-color: transparent;
+    box-shadow: none;
+    outline: 2px solid rgb(186, 187, 198);
+}
 
 .Post p {
     word-break: break-all;

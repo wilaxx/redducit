@@ -5,15 +5,17 @@
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding: 1rem;
     box-sizing: border-box;
-    background-color: #f8f8e7;
-     background:
-    linear-gradient(70deg, rgb(179, 176, 174), rgba(26, 22, 36, 0.819));
-    border-top: 1px solid #d5d5b6;
-    border-left: 1px solid #d5d5b6;
+    background-color: rgba(193, 228, 239, 0.251);
+    /* border-top: 1px solid #d5d5b6; */
+    /* border-left: 1px solid #d5d5b6; */
+    /* border-bottom: 1px solid #d5d5b6; */
+        /* border-right: 1px solid #d5d5b6; */
     border-radius: 20px;
+    
 }
 
 .Comment .author {
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
@@ -22,11 +24,22 @@
     margin-bottom: 0.5rem;
 }
 
+
+
 .Comment .created-date {
     font-size: 0.8rem;
     color: #888;
 }
 
 .Comment--highlighted {
-    border: 2px solid #e5f2ff; /* Exemple de couleur, ajustez selon vos besoins */
+    /* border: 1px solid #464749;  */
+    /* box-shadow: 0 0 10px #0f1011;  */
+    box-shadow: rgba(0, 0, 0, 0.2) 0px -10px 10px 0px inset, 
+    rgba(0, 0, 0, 0.15) 0px -15px 12.5px 0px inset, 
+    rgba(0, 0, 0, 0.1) 0px -25px 15px 0px inset, 
+    rgba(0, 0, 0, 0.1) 0px 1px 0.5px, 
+    rgba(0, 0, 0, 0.08) 0px 2px 1px, 
+    rgba(0, 0, 0, 0.06) 0px 3px 1.5px;
+
+
 }
