@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, cloneElement } from 'react';
 
-const useSequentialAnimation = (element1, element2, animation1, animation2, event) => {
+const useSequentialAnimation = (element1, element2, animation2, event) => {
     useEffect(() => {
         const getElement = (el) => {
             if (typeof el === 'string') {
@@ -15,9 +15,9 @@ const useSequentialAnimation = (element1, element2, animation1, animation2, even
         if (!el1 || !el2) return;
 
         const handleEvent = () => {
-            el1.classList.add(animation1);
+            el1.classList.add('selected'); // Ajoute la classe 'selected' au premier élément
             el1.addEventListener('animationend', () => {
-                el2.classList.add(animation2);
+                el2.classList.add(animation2); // Ajoute la classe d'animation au second élément
             }, { once: true });
         };
 
@@ -26,7 +26,7 @@ const useSequentialAnimation = (element1, element2, animation1, animation2, even
         return () => {
             el1.removeEventListener(event, handleEvent);
         };
-    }, [element1, element2, animation1, animation2, event]);
+    }, [element1, element2, animation2, event]);
 
 };
 

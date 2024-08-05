@@ -1,15 +1,10 @@
 .App {
     display: flex;
-    flex-direction: column;
-    /* width: 100%; */
-    /* overflow-y: hidden; */
-    
+    flex-direction: column;  
 }
-
 .app-header {
     display: flex;
     justify-content: center;
-    /* color: rgba(210, 213, 227, 0.637); */
     align-items: center;
     background:
     linear-gradient(70deg, rgb(197, 137, 64), rgba(46, 0, 148, 0.819)),
@@ -18,25 +13,8 @@
     height: 10vh;
     top: 0px;
     position: sticky;
-    /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); */
     z-index: 1000;
-
 }
-/* 
-.app-header:focus-within {
-  
-    background:
-        linear-gradient(90deg, rgb(197, 137, 64), rgba(66, 34, 136, 0.819));   
-} */
-
-.App:has(aside:hover) section {
-   /* overflow-y: unset; */
-}
-
-.App:has(aside:hover) section {
-    pointer-events: none;
-}
-
 .headerleft h1 {
     cursor: default;
     padding: 0.6rem 1.1rem;
@@ -50,7 +28,6 @@
                 rgba(0, 0, 0, 0.01) 0px 2px 1px;
     transition: box-shadow 1s ease-in-out, transform 1s ease-in-out, color 1s ease-in-out;
 }
-
 .App h1:hover {
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
                 rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
@@ -62,13 +39,11 @@
     transform: scale(0.7);
     cursor: pointer;
 }
-
-.headerleft h1:hover:active {
-    transform: scale(0);
+.headerleft h1:hover {
+    transform: scale(0.1);
     opacity: 0;
-    transition: transform 0.1s ease-out, opacity 0.1s ease-out;
+    transition: transform 3s ease-out, opacity 3s ease-out;
 }
-
 .headerleft {
     flex: 1;
     display: flex;
@@ -76,14 +51,12 @@
     align-items: center;
     padding-left: 2rem;
 }
-
 .headercenter {
     flex: 2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .headerright {
     flex: 1;
     display: flex;
@@ -91,15 +64,12 @@
     width: 100%;
     align-items: center;
     border-radius: 1rem; 
-    
 }
-
 #wrapperCurrentSub{
     height: 5rem;
     width: calc(15vw - 0.5rem);
-    border: 1px solid #d5d5b6;
+    /* border: 1px solid #d5d5b6; */
 }
-
 #currentSubButton {
     padding: 0.5rem 0 0.5rem 0.8rem;
     height: 100%;
@@ -111,8 +81,17 @@
     font-size: 1rem;
     font-weight: bold;
     color: rgb(62, 62, 68);
-
+    opacity: 0;
 }
+
+/* effet fade-in décalée 2s */
+
+.App:has(.Subreddit button.selected) #currentSubButton {
+    opacity: 1;
+    animation: fade-out-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000)  both;
+}
+
+
 
 #currentSubButton svg {
     height: 3rem;
@@ -195,28 +174,109 @@ aside {
     display: inline-block; /* Ensure the span does not take up more space than necessary */
 }
 
-.element1, .element2 {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
-    background-color: lightblue;
-    display: inline-block;
+
+/* .fade-in-fwd {
+	-webkit-animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-@keyframes animation1 {
-    from { transform: scale(1); }
-    to { transform: scale(1.5); }
+ @-webkit-keyframes fade-in-fwd {
+    0% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in-fwd {
+    0% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+  }
+
+  .fade-out-bck {
+    -webkit-animation: fade-out-bck 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: fade-out-bck 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  @-webkit-keyframes fade-out-bck {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+  }
+  @keyframes fade-out-bck {
+    0% {
+      -webkit-transform: translateZ(0);
+              transform: translateZ(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateZ(-80px);
+              transform: translateZ(-80px);
+      opacity: 0;
+    }
+  } */
+
+
+/* Nouvelle animation combinée */
+.fade-out-in {
+  -webkit-animation: fade-out-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+          animation: fade-out-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
-@keyframes animation2 {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Définition des étapes de l'animation combinée */
+@-webkit-keyframes fade-out-in {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
 }
 
-.animation1 {
-    animation: animation1 2s forwards;
+@keyframes fade-out-in {
+  0% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
 }
 
-.animation2 {
-    animation: animation2 2s forwards;
-}
+  

@@ -15,11 +15,7 @@ const Posts = () => {
 
     const postsData = postsState.posts;
 
-    
-
     let searchTerm = useSelector(state => state.posts.searchTerm);
-    
-
 
     useEffect(() => {
         const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json`;
