@@ -5,6 +5,7 @@ const initialState = {
 		subreddits: [],
 		isError: false,
 		filteredSubreddit: '',
+		selectedSubredditImage: '',
 		errorMessage: '',
 		errorStatus: ''
 }
@@ -30,7 +31,8 @@ const subredditsSlice = createSlice({
 	initialState,
 	reducers: {
 		selectSubreddit: (state, action) => {
-			state.filteredSubreddit = action.payload;
+			state.filteredSubreddit = action.payload.name;
+			state.selectedSubredditImage = action.payload.url;
 		  }
 	},
 	extraReducers: (builder) => {
@@ -57,4 +59,5 @@ const subredditsSlice = createSlice({
 export const { selectSubreddit } = subredditsSlice.actions;
 export const selectSubredditsState = state => state.subreddits;
 export const selectFilteredSubreddit = state => state.subreddits.filteredSubreddit;
+export const selectSelectedSubredditImage = state => state.subreddits.selectedSubredditImage;
 export default subredditsSlice.reducer;

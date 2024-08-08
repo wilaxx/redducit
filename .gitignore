@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #igonrer le dossier
-src/wy-lib_js
+src/wy-lib

@@ -7,10 +7,9 @@
     /* flex-direction: column; */
 }
 
-.Subreddit:has(.selected) {
-   box-shadow: none;
+/* .Subreddit:has(.selected) {
    transform-origin: right;
-}
+} */
 
 .subredditButton {
     border-radius: 1rem; 
@@ -68,6 +67,14 @@
     outline: none;
 }  
 
+
+.subname {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%; /* Adjust this value as needed */
+        display: inline-block; /* Ensure the span does not take up more space than necessary */
+    }
 
 
 .scale-in-hor-right {

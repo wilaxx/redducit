@@ -33,12 +33,13 @@ const SearchBar = () => {
             id="searchbar" 
             type="search"
             value={inputValue} 
-            placeholder="   type in word or sentence to search ..."
+            placeholder="  type in word or sentence to search ..."
             onChange={onSearchTermChange} 
             onKeyDown={(e) => {
             if (e.key === 'Enter') {
                 handleSearch();
                 setInputValue('');
+                e.target.blur();
             }
         }}
             />

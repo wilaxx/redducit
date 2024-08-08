@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SearchBar from './App/components/SearchBar';
+import SelectedSubreddit from './App/components/SelectedSubreddit';
 import Posts from './App/features/posts/Posts';
 import Subreddits from './App/features/subreddits/Subreddits';
 import './wy-lib/styles/animations.css';
@@ -8,7 +9,7 @@ import './App.css';
 const App = () => {
 
     const [showScrollButton, setShowScrollButton] = useState(false);
-
+    const referenceElement = useRef(null);
 
     const handleScroll = () => {
        
@@ -44,10 +45,7 @@ const App = () => {
                     <SearchBar />
                 </div>
                 <div className="headerright">
-                    <div id="wrapperCurrentSub">
-                        
-                    </div>
-                    
+                    <SelectedSubreddit referenceElement={referenceElement} />
                 </div>  
             </header>
             
@@ -55,7 +53,7 @@ const App = () => {
                 <section className='app-section'>
                     <Posts />
                 </section>
-                <aside>
+                <aside ref={referenceElement}>
                     <Subreddits />
                 </aside>
             </main>
