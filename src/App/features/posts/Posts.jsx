@@ -11,11 +11,11 @@ const Posts = () => {
     const dispatch = useDispatch();
     const postsState = useSelector(selectPostsState);
     const selectedSubreddit = useSelector(selectFilteredSubreddit);
-    const { isLoading, isError, errorMessage, errorStatus } = postsState;
+    const { isLoading, isError, errorMessage, errorStatus, searchTerm } = postsState;
 
     const postsData = postsState.posts;
 
-    let searchTerm = useSelector(state => state.posts.searchTerm);
+    // let searchTerm = useSelector(state => state.posts.searchTerm);
 
     useEffect(() => {
         const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json`;
@@ -30,7 +30,7 @@ const Posts = () => {
         }
     }, [searchTerm, dispatch]);
 
-    if(isLoading) {
+    if(isLoading || Object.keys(postsData).length === 0) {
         return <div className='post-loading'>
             <LiaSpinnerSolid className='spinner' />
         </div>
@@ -40,7 +40,7 @@ const Posts = () => {
         return <div>Error: {errorMessage} {errorStatus}</div>
     }
 
-    if(postsData.length === 0) {
+    if(!isLoading && postsData.length === 0) {
         return <div>No posts available</div>
     }
 

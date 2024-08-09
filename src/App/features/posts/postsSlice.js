@@ -14,18 +14,10 @@ const initialState = {
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
   try {
-      const response = await fetch(url, {
-          headers: {
-              'Accept-Language': 'fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7',
-          }
-      });
+      const response = await fetch(url);
 
       if (response.status === 429) {
           throw new Error('Too many requests. Please try again later.');
-      }
-
-      if (!response.ok) {
-          throw new Error('Failed to fetch posts');
       }
 
       const json = await response.json();
@@ -41,7 +33,7 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
 
       return postsData;
   } catch (error) {
-      return Promise.reject(error.message);
+      return error; //return Promise.reject(error.message)
   }
 });
 

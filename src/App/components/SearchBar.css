@@ -8,9 +8,6 @@
     width: 85%;
 }
 
-.input::before {
-    content: 'yooooooooooo';
-}
  input {
     padding: 0.3rem;
     /* border: 1px solid #d1c1c1; */

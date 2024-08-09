@@ -25,6 +25,7 @@ const SearchBar = () => {
         dispatch(setSearchTerm(inputValue));
         dispatch(selectSubreddit(''));
         scrollToTop();
+        setInputValue('');
     };
 
     return (
@@ -38,15 +39,17 @@ const SearchBar = () => {
             onKeyDown={(e) => {
             if (e.key === 'Enter') {
                 handleSearch();
-                setInputValue('');
                 e.target.blur();
             }
         }}
             />
-            <button 
-            onClick={() => {
+            <button
+                type='submit' 
+            onClick={(e) => {
+                const search = document.getElementById('searchbar');
+                search.value = '';
                 handleSearch();
-                setInputValue('');
+                e.target.blur();
                 }} > <HiOutlineSearch /> </button>
         </div>
     );
