@@ -17,9 +17,7 @@
   overflow: hidden;
 }
 
-  .App:has(.selected) .selected-subreddit {
-    /* outline: 2px solid buttonborder; */
-  }
+ 
 
   .selected-subreddit img {
     height: 3rem;
