@@ -24,6 +24,10 @@ const Subreddits = () => {
         return;
     }
 
+    if(subredditsData.length === 0 && !isLoading && !isError)  {
+        return;
+    }
+
     if(isError) {
         return <div>Error: {errorMessage} {errorStatus}</div>
     }   

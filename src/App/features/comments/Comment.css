@@ -5,12 +5,12 @@
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     padding: 1rem;
     box-sizing: border-box;
-    background-color: rgba(193, 228, 239, 0.251);
+    background-color: rgba(57, 209, 158, 0.251);
     /* border-top: 1px solid #d5d5b6; */
     /* border-left: 1px solid #d5d5b6; */
     /* border-bottom: 1px solid #d5d5b6; */
         /* border-right: 1px solid #d5d5b6; */
-    border-radius: 20px;
+    border-radius: 0.5rem;
     
 }
 
@@ -28,11 +28,12 @@
 
 .Comment .created-date {
     font-size: 0.8rem;
-    color: #888;
+    color: #310808;
 }
 
 .Comment--highlighted {
-    /* border: 1px solid #464749;  */
+    border: 1px solid #8c9097; 
+    border-radius: 0.8rem;
     /* box-shadow: 0 0 10px #0f1011;  */
     box-shadow: rgba(0, 0, 0, 0.2) 0px -10px 10px 0px inset, 
     rgba(0, 0, 0, 0.15) 0px -15px 12.5px 0px inset, 

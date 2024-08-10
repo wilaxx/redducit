@@ -13,7 +13,7 @@ import Comments from '../comments/Comments.jsx';
 
 const Post = ({post}) => {
    
-    const { title, author, num_comments, ups, created_utc, permalink, selftext_html, secure_media, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail, loadingComments } = post;
+    const { title, author, num_comments, ups, created_utc, permalink, selftext_html, secure_media, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail, loadingComments, spoiler } = post;
     const [showComments, setShowComments] = useState(false);
     // const { loadingComments } = useSelector(selectPostsState);
     const dispatch = useDispatch();
@@ -109,7 +109,7 @@ const Post = ({post}) => {
                 </a>
             </header>
 
-            <section className="post-section">
+            <section className={`post-section ${spoiler ? 'spoiler' : ''}`}>
                 <div className='post-content'>
                     {renderContent()}
                 </div>
