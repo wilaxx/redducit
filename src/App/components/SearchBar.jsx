@@ -32,7 +32,7 @@ const SearchBar = () => {
         <div className='SearchBar'>
             <input
             id="searchbar" 
-            type="search"
+            type="text"
             value={inputValue} 
             placeholder="  type in word or sentence to search ..."
             onChange={onSearchTermChange} 

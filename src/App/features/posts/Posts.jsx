@@ -11,20 +11,22 @@ const Posts = () => {
     const dispatch = useDispatch();
     const postsState = useSelector(selectPostsState);
     const selectedSubreddit = useSelector(selectFilteredSubreddit);
-    const { isLoading, isError, errorMessage, errorStatus, searchTerm } = postsState;
+    const { isLoading, isError, errorMessage, errorStatus } = postsState;
 
     const postsData = postsState.posts;
 
-    // let searchTerm = useSelector(state => state.posts.searchTerm);
+    let searchTerm = useSelector(state => state.posts.searchTerm);
 
     useEffect(() => {
+        if (selectedSubreddit !== undefined) {
         const POSTS_URL = `https://www.reddit.com/${selectedSubreddit}.json`;
-            dispatch(fetchPosts(POSTS_URL));
+        dispatch(fetchPosts(POSTS_URL));
+        }
     }, [selectedSubreddit, dispatch])
 
     
     useEffect(() => {
-        if (searchTerm !== '') {
+        if (searchTerm !== '' && searchTerm !== undefined) {
             const SEARCH_URL = `https://www.reddit.com/search.json?q=${searchTerm}`;
             dispatch(fetchPosts(SEARCH_URL));
         }

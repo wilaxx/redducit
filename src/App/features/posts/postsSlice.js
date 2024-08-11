@@ -14,28 +14,34 @@ const initialState = {
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
   try {
+
       const response = await fetch(url);
 
       if (response.status === 429) {
           throw new Error('Too many requests. Please try again later.');
       }
 
+      if (!response.ok) {
+          throw new Error(`Failed to fetch posts, le code erreur est ${response.status}`);
+      }
+
       const json = await response.json();
-      const posts = json.data.children;
-      const prePostsData = posts.map(post => post.data);
-      const postsData = prePostsData.map(post => ({
-          ...post,
+      const posts = json.data?.children;
+
+      const postsData = posts?.map(post => ({
+          ...post.data,
           showingComments: false,
           comments: [],
           errorComments: false,
           loadingComments: false
       }));
 
-      return postsData;
+      return postsData;  // Toujours renvoyer un tableau d'objets sérialisables
   } catch (error) {
-      return error; //return Promise.reject(error.message)
+      return Promise.reject(error.message);  // Rejeter la promesse avec un message d'erreur
   }
 });
+
 
 export const fetchComments = createAsyncThunk(
   'posts/fetchComments',

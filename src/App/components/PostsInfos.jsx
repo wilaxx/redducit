@@ -12,7 +12,7 @@ const PostsInfos = () => {
   const renderContent = () => {
     if (filteredSubreddit === '' && searchTerm === '') {
       return (
-        <div className="postsForLanding fade-in-in">
+        <div key="redditPosts" className="postsForLanding fade-in-in">
           <p>Posts from</p>
           <img src='https://reddit.com/favicon.ico' alt="Posts from reddit.com landing page" />
           <p>Reddit.com</p>
@@ -21,14 +21,14 @@ const PostsInfos = () => {
       } 
     else if (searchTerm !== '') {
       return (
-        <div className="postsForSearch fade-in-in">
+        <div key="searchPosts" className="postsForSearch fade-in-in">
           <p>Posts from <span>{searchTerm}</span> search</p>
         </div>
             );
       } 
         else {
       return (
-        <div className="postsForSubreddits fade-in-in">
+        <div key={filteredSubreddit} className="postsForSubreddits fade-in-in">
           <p>Posts from </p>
           <img src={selectedSubredditImage} alt={filteredSubreddit} />
           <p>{filteredSubreddit}</p>

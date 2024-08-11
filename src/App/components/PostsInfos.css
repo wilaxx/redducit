@@ -1,4 +1,4 @@
-.postsForSubreddits {
+.postsForSubreddits, .postsForLanding, .postsForSearch {
     padding: 0.5rem 0 0.5rem 0.8rem;
     display: flex;
     align-items: center;
@@ -22,7 +22,11 @@
   margin: 0 1rem;
   font-size: 1.7em;
 }
-
+.postsForSearch p span {
+  color: rgb(18, 17, 17);
+  margin: 0 0.8rem;
+  font-size: 1.2em;
+}
   .postsForSubreddits img {
     height: 3rem;
     width: auto;

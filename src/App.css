@@ -66,35 +66,6 @@
     border-radius: 1rem;
 }
 
-#currentSubButton {
-    padding: 0.5rem 0 0.5rem 0.8rem;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    /* justify-content: flex-start; */
-    align-items: center;
-    gap: 0.7rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: rgb(62, 62, 68);
-    /* opacity: 0; */
-}
-
-/* effet fade-in décalée 2s */
-
-.App:has(.Subreddit button.selected) #currentSubButton {
-    opacity: 1;
-    animation: fade-out-in 2s cubic-bezier(0.390, 0.575, 0.565, 1.000)  both;
-}
-
-
-
-#currentSubButton svg {
-    height: 3rem;
-    width: auto;
-    border-radius: 50%;
-}
-
 main {
     display: flex;
     /* flex-direction: row-reverse; */
