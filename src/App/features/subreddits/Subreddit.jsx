@@ -57,7 +57,7 @@ const Subreddit = ({ subreddit }) => {
           alt={`${subreddit.display_name}`}
           onError={(e) => handleImageError(e.target)}
         />
-        <span className='subname animate__animated animate__zoomInRight animate__slower'>{subreddit.display_name}</span>
+        <span className='subname animate__animated animate__zoomInRight animate__slower boogaloo-regular'>{subreddit.display_name}</span>
       </button>
     </li>
   );

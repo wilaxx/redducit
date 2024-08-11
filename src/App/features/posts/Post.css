@@ -7,23 +7,6 @@
     background-color: rgba(70, 62, 75, 0.2);
     border-radius: 0.5rem;
 }
-.Comment .Comment {
-    margin-bottom: 0.4rem;
-}
-
-.Comment .Comment:hover {
-    /* background-color: rgba(215, 101, 243, 0.2); */
-    background-color: rgba(234, 248, 243, 0.251);
-    /* box-shadow: none; */
-    /* outline: 2px solid rgb(82, 85, 117); */
-}
-
-.Comment:hover {
-    /* background-color: rgba(194, 179, 197, 0.2); */
-    background-color: rgba(234, 248, 243, 0.251);
-    /* box-shadow: none; */
-    /* outline: 2px solid rgb(82, 85, 117); */
-}
 .Post:hover {
     box-shadow: none;
     outline: 2px solid rgb(78, 79, 87);
@@ -33,44 +16,24 @@
 }
 
 .Post:hover:has(.Comment:hover) {
-    /* background-color: rgba(70, 93, 82, 0.2); */
     box-shadow: none;
-    /* outline: 2px solid rgb(82, 85, 117); */
 }
-
 .Post p {
     word-break: break-all;
     font-size: 1.2rem;
 }
-
 .post-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0.5rem;    gap: 0.5rem;
+    margin-bottom: 0.5rem;    
+    gap: 0.5rem;
     padding: 0.3rem;
     box-sizing: border-box; /* Ajouté */
 }
-
-.votes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.3rem;
+.post-header h2 {
+    /* font-size: 1.6rem; */
+    color: #30303f;
 }
-
-.icon-newtab {
-    color: rgb(150, 150, 150);
-}
-
-[class^="icon-"] {
-    font-size: 1.3rem;
-}
-
-.votes .icon-ups {
-    color: rgb(50, 54, 50);
-    margin-left: 1rem;
-}
-
 .post-section {
     display: flex;
     flex-direction: column;
@@ -80,53 +43,10 @@
     padding: 0.3rem;
     box-sizing: border-box; /* Ajouté */
 }
-
-.spoiler {
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-}
-
-.spoiler:hover {
-    background-color: rgb(230, 183, 183);
-}
-
 .post-content{
     display: flex;
     gap: 1rem;
 }
-
-.md {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-.md code {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-    padding: 0.2rem;
-    border-radius: 0.2rem;
-    font-size: 1rem;
-}
-
-.md p {
-    word-break: break-word;
-    font-size: 1.2rem;
-    overflow-wrap: break-word;
-}
-
-.comments {
-    scroll-margin-top: 11vh;
-}
-
-article {
-    scroll-padding-top: 0px;
-  }
-
 .Post:hover .post-content {
     a:link {
         color: rgb(15, 15, 133);
@@ -194,11 +114,95 @@ article {
     align-content: center;
  }
 
-
 .post-footer .comments {
     justify-content: flex-end;
     gap: 0.3rem;
  }
+
+
+
+
+
+.grandstander-title {
+    font-family: "Grandstander", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .patrick-hand-sc-regular {
+    font-family: "Patrick Hand SC", cursive;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+.votes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.icon-newtab {
+    color: rgb(150, 150, 150);
+}
+
+[class^="icon-"] {
+    font-size: 1.3rem;
+}
+
+.votes .icon-ups {
+    color: rgb(50, 54, 50);
+    margin-left: 1rem;
+}
+
+
+
+.spoiler {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.spoiler:hover {
+    background-color: rgb(230, 183, 183);
+}
+
+
+
+.md {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+.md code {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+}
+
+.md p {
+    word-break: break-word;
+    font-size: 1.6rem;
+    line-height: 1;
+    overflow-wrap: break-word;
+}
+
+.comments {
+    scroll-margin-top: 11vh;
+}
+
+article {
+    scroll-padding-top: 0px;
+  }
+
+
 
 .comments {
     display: flex;

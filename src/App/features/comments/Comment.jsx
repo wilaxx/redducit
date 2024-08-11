@@ -18,14 +18,36 @@ const Comment = ({ comment }) => {
         dispatch(selectComment(comment.id));
     };
 
+    const GetNumOfReplies = () => {
+        if (replies !== "" && replies.data && replies.data.children) {
+            const filteredChildren = replies.data.children.filter(child => child.kind !== "more");
+            return filteredChildren.length;
+        }
+        return 0;
+    }
+
+    let numOfReplies = GetNumOfReplies();
     const showIconReplies = (replies) => {
+       
         if (replies !== "" && replies.data && replies.data.children) {
             const filteredChildren = replies.data.children.filter(child => child.kind !== "more");
             if (filteredChildren.length > 0) {
                 if (showReplies) {
-                    return <TbMessagesOff onClick={() => setShowReplies(!showReplies)} />;
+                    return (
+                        <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
+                            {numOfReplies > 0 && <span>{numOfReplies}</span>}
+                    <TbMessagesOff onClick={() => setShowReplies(!showReplies)} />
+                        </div>
+                    );
                 } else {
-                    return <TbMessages onClick={() => setShowReplies(!showReplies)} />;
+
+                    return (
+                    <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
+                        {numOfReplies > 0 && <span>{numOfReplies}</span>}
+                        <TbMessages />
+                    </div>
+                    );
+            
                 }
             }
         }
@@ -47,17 +69,31 @@ const Comment = ({ comment }) => {
       
   }
   return null;
-}
+    }
+
+ 
 
 
 
     return (
         <div className={`Comment ${isSelected ? 'Comment--highlighted' : ''}`} onClick={handleClick}>
-            <h3 className='author'>{author}</h3>
-            <div className='body'>{body}</div>
-            <div className='created-date'>{moment.unix(created_utc).fromNow()}</div>
-            {showIconReplies(replies)} 
-            {renderReplies(replies)} 
+
+            <div className='comment-header'>
+                <h3 className='header'>{author}</h3>
+                <div className='created-date'>
+                    {moment.unix(created_utc).fromNow()}
+                </div>
+            </div>
+
+            <div className='comment-body ubuntu-medium'>
+                <p>{body}</p>
+            </div>
+
+            <div className="comment-footer">
+                {showIconReplies(replies)}
+            </div>
+            
+                {renderReplies(replies)}
         </div>
     );
 };

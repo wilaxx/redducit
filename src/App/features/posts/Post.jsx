@@ -57,7 +57,7 @@ const Post = ({post}) => {
         if (selftext_html) {
             const decodedHTML = decodeHTML(selftext_html);
             const updatedHTML = addTargetBlankToLinks(decodedHTML);
-            content.push(<div key={`${id}-selftext`} className='selftext_html' dangerouslySetInnerHTML={{ __html: updatedHTML }} />);
+            content.push(<div key={`${id}-selftext`} className='selftext_html patrick-hand-sc-regular' dangerouslySetInnerHTML={{ __html: updatedHTML }} />);
         }
 
         if (imageUrl) {
@@ -103,7 +103,7 @@ const Post = ({post}) => {
         <article className='Post scale-in-center' key={id}>
 
             <header className="post-header">
-                <h2>{title}</h2>
+                <h2 className='grandstander-title'>{title}</h2>
                 <a key={`${id}-link`} href={`https://www.reddit.com${permalink}`} target="_blank" rel="noopener noreferrer">
                     <ImNewTab className='icon-newtab' />
                 </a>
