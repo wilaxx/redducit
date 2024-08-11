@@ -1,4 +1,4 @@
-.selected-subreddit {
+.postsForSubreddits {
     padding: 0.5rem 0 0.5rem 0.8rem;
     display: flex;
     align-items: center;
@@ -12,14 +12,18 @@
     /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
   }
   
-.selected-subreddit span{
+/* .selected-subreddit span{
   text-overflow: ellipsis;
   overflow: hidden;
+} */
+
+.postsForSubreddits p span {
+  color: rgb(18, 17, 17);
+  margin: 0 1rem;
+  font-size: 1.7em;
 }
 
- 
-
-  .selected-subreddit img {
+  .postsForSubreddits img {
     height: 3rem;
     width: auto;
     border-radius: 50%;
