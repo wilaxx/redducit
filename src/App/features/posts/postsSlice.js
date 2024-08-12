@@ -36,9 +36,9 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (url) => {
           loadingComments: false
       }));
 
-      return postsData;  // Toujours renvoyer un tableau d'objets sérialisables
+      return postsData;  
   } catch (error) {
-      return Promise.reject(error.message);  // Rejeter la promesse avec un message d'erreur
+      return Promise.reject(error.message);
   }
 });
 
