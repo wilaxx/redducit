@@ -22,7 +22,7 @@ const PostsInfos = () => {
     else if (searchTerm !== '') {
       return (
         <div key="searchPosts" className="postsForSearch fade-in-in">
-          <p>Posts from <span>{searchTerm}</span> search</p>
+          <p>Posts for <span>"{searchTerm}"</span> search</p>
         </div>
             );
       } 
