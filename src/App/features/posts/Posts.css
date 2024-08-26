@@ -10,14 +10,15 @@
 .Posts::-webkit-scrollbar {
     display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 }
-.post-loading {
+.posts-loading {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    height: 100%;
+    padding: 2rem; /* empeche l icone loading de passer en dessous du viewport height sur les petits telephones*/
 }
 .spinner {
-    font-size: 13rem;
+    font-size: 16rem;
     animation: spin 1s ease-out infinite;
 }
 @keyframes spin {

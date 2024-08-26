@@ -35,16 +35,16 @@ const Comment = ({ comment }) => {
                 if (showReplies) {
                     return (
                         <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
-                            {numOfReplies > 0 && <span>{numOfReplies}</span>}
-                            <TbMessagesOff />
+                            {numOfReplies > 0 && <p>{numOfReplies}</p>}
+                            <TbMessagesOff className='messages-off'/>
                         </div>
                     );
                 } else {
 
                     return (
                         <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
-                            {numOfReplies > 0 && <span>{numOfReplies}</span>}
-                            <TbMessages />
+                            {numOfReplies > 0 && <p>{numOfReplies}</p>}
+                            <TbMessages className='messages-on' />
                         </div>
                     );
             
@@ -79,7 +79,7 @@ const Comment = ({ comment }) => {
         <div className={`Comment ${isSelected ? 'Comment--highlighted' : ''}`} onClick={handleClick}>
 
             <div className='comment-header'>
-                <h3 className='header'>{author}</h3>
+                <h3 className='author'>{author}</h3>
                 <div className='created-date'>
                     {moment.unix(created_utc).fromNow()}
                 </div>

@@ -20,6 +20,7 @@
     background-color: rgba(189, 197, 204, 0.568);
     border: 1px solid rgb(168, 152, 174);
     font-size: clamp(16px, 14.4px + 0.5vw, 27.2px);
+    min-height: 2.5rem;
 
 }
 

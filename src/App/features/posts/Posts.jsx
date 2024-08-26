@@ -33,7 +33,7 @@ const Posts = () => {
     }, [searchTerm, dispatch]);
 
     if(isLoading) {
-        return <div className='post-loading'>
+        return <div className='posts-loading'>
             <LiaSpinnerSolid className='spinner' />
         </div>
     }

@@ -23,7 +23,7 @@ justify-content: space-between;
 padding: 0.3rem;
 }
 .post-header h2 {
-font-size: clamp(1.1rem, 1.028rem + 0.36vw, 1.6rem);
+font-size: clamp(1.1rem, 0.971rem + 0.647vw, 2rem);
 color: #30303f;
 }
 .post-section {
@@ -88,7 +88,7 @@ display: flex;
 align-items: center;
 }
 .post-footer > div p {
-    font-size: clamp(0.8rem, 0.728rem + 0.36vw, 1.3rem);
+    font-size: clamp(0.5rem, 0.385rem + 0.576vw, 1.3rem);
 }
 .grandstander-title {
 font-family: "Grandstander", cursive;
@@ -142,8 +142,8 @@ font-size: 1rem;
 }
 .md p {
 word-break: break-word;
-font-size: clamp(1rem, 0.856rem + 0.719vw, 2rem);
-line-height: 1;
+font-size: clamp(1.1rem, 0.971rem + 0.647vw, 2rem);
+line-height: 0.8;
 overflow-wrap: break-word;
 }
 .comments {
