@@ -64,9 +64,19 @@ const Post = ({post}) => {
             content.push(<img key={`${id}-singleImage`} className='img-single' src={imageUrl} alt={title} />);
         }
         if (secure_media && secure_media.reddit_video && secure_media.reddit_video.fallback_url) {
+
+            const fullUrl = secure_media.reddit_video.fallback_url;
+
+            // Extraire la base de l'URL
+            const baseUrl = fullUrl.substring(0, fullUrl.lastIndexOf('/') + 1);
+
+            // Concaténer avec "DASH_AUDIO_128.mp4"
+            const audioUrl = baseUrl + "DASH_720.mp4";
+            
             content.push(
                 <video key={`${id}-video`} className='video' controls>
                     <source src={secure_media.reddit_video.fallback_url} type='video/mp4' />
+                    <source src={audioUrl} type="audio/mp4" />
                 </video>
             );
         }
@@ -116,15 +126,16 @@ const Post = ({post}) => {
             </section>
            
             <footer className='post-footer'>
-                <div className='author'><FaUserPen className="icon-author" /> {author}</div>
-                <div className='created-date'>{moment.unix(created_utc).fromNow()}</div>
+                
+                <div className='author'><FaUserPen className="icon-author" /> <p>{author}</p></div>
+                <div className='created-date'><p>{moment.unix(created_utc).fromNow()}</p></div>
                 <div className='votes'>  
                 <TiArrowUpOutline className='icon-ups' />
-                    {ups} 
+                  <p>{ups}</p> 
                 </div>
                 <div className='comments'>
                     {renderIconComments()}
-                <span className='comment-count'>{num_comments}</span>
+                <p className='comment-count'>{num_comments}</p>
                 </div>
                 
             </footer>

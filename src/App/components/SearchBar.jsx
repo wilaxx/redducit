@@ -22,10 +22,12 @@ const SearchBar = () => {
     };
 
     const handleSearch = () => {
+        if (inputValue.trim() !== '') {
         dispatch(setSearchTerm(inputValue));
         dispatch(selectSubreddit(''));
         scrollToTop();
         setInputValue('');
+    }
     };
 
     return (
@@ -45,7 +47,7 @@ const SearchBar = () => {
             />
             <button
                 type='submit' 
-            onClick={(e) => {
+                onClick={(e) => {
                 const search = document.getElementById('searchbar');
                 search.value = '';
                 handleSearch();

@@ -1,17 +1,15 @@
 .Subreddits {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     /* padding: 0.5rem; */
     gap: 1rem;
     width: 100%;
 }
-
 .Subreddits::-webkit-scrollbar {
     display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 }
-
 .Subreddits ul {
     display: flex;
     /* flex-wrap: wrap; */
@@ -20,5 +18,37 @@
     width: 100%;
 
     
+}
+
+@media only screen and (max-width: 1000px) {
+
+.Subreddits ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      /* flex: 0 1 10vw; */
+      justify-content: space-evenly;
+}
+
+.Subreddits ul > .Subreddit:nth-last-child(1) { /* remplacer par n + 1 */
+    flex: 1 1 auto; /* Limite sa largeur à 30% */
+    max-width: 30%
+
+}
+.Subreddits ul > .Subreddit:nth-last-child(2) {
+    flex: 1 1 auto; /* Limite sa largeur à 30% */
+    max-width: 30%;
+
+}
+.Subreddits ul > .Subreddit:nth-last-child(3) {
+    flex: 1 1 auto; /* Limite sa largeur à 30% */
+    max-width: 30%;
+
+}
+.Subreddits ul > .Subreddit:nth-last-child(4) {
+    flex: 1 1 auto; /* Limite sa largeur à 30% */
+    max-width: 30%;
+
+}
+
 }
 

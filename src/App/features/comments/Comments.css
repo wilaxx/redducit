@@ -1,7 +1,7 @@
 .Comments {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.8rem;
     padding: 0.5rem 3rem;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -13,4 +13,21 @@
 
 .Comments::-webkit-scrollbar {
     display: none;
+}
+
+@media only screen and (max-width: 1000px) {
+
+    .Comments {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem 0.1rem;
+        overflow-y: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+       /* background-color: #d5d5b6; */
+       border-top: 2px solid #d5d5b69c;
+       
+    }
+  
 }

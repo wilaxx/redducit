@@ -5,7 +5,8 @@
     gap: 0.3rem;
     padding: 0.3rem;
     position: relative;
-    width: 85%;
+    width: 80%;
+    max-width: 100%;
 }
 
  input {
@@ -18,7 +19,7 @@
     border-radius: 45px;
     background-color: rgba(189, 197, 204, 0.568);
     border: 1px solid rgb(168, 152, 174);
-    font-size: 1.3rem;
+    font-size: clamp(16px, 14.4px + 0.5vw, 27.2px);
 
 }
 
@@ -27,22 +28,22 @@ input:hover {
 }
 
 input::placeholder {
-  font-size: 1.3rem;
-  transform: translateY(0.2rem);
+  font-size: clamp(0.5rem, 0.5rem + 0.5vw, 1.4rem);
+  /* transform: translateY(0.1rem); */
   font-style: italic;
   font-weight: bold;
   color: rgba(116, 115, 115, 0.822);
 }
 
 input:focus::placeholder {
-  font-size: 0.8rem;
-  transform: translateY(-1.2rem) translateX(0.5rem);
+  font-size: clamp(9.6px, 8.686px + 0.286vw, 16px);
+  transform: translateY(-1.1rem) translateX(0.5rem);
   color: rgb(66, 34, 136);
 }
 input:focus {
   outline: 2px solid rgb(189, 172, 196);
-  
-  font-size: 1.3rem;
+
+  font-size: clamp(16px, 14.4px + 0.5vw, 27.2px);
   background-color: rgb(189, 197, 204);
 
 }
@@ -57,7 +58,7 @@ input:focus {
   }
 
 .SearchBar button svg {
-    font-size: 1.6rem;
+  font-size: clamp(16px, 14.4px + 0.5vw, 27.2px);
   }
 
 #searchbar::-webkit-search-cancel-button {
@@ -65,5 +66,18 @@ input:focus {
   position: relative;
   right: 2.8rem;
 }
+
+
+
+
+@media only screen and (max-width: 1000px) {
+
+  .SearchBar {
+    width: 100%;
+  }
+}
+
+
+
 
 

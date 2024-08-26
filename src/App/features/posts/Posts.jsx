@@ -32,10 +32,14 @@ const Posts = () => {
         }
     }, [searchTerm, dispatch]);
 
-    if(isLoading || Object.keys(postsData).length === 0) {
+    if(isLoading) {
         return <div className='post-loading'>
             <LiaSpinnerSolid className='spinner' />
         </div>
+    }
+
+    if (Object.keys(postsData).length === 0) {
+        return;
     }
 
     if(isError) {

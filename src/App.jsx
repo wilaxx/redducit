@@ -3,10 +3,16 @@ import SearchBar from './App/components/SearchBar';
 import PostsInfos from './App/components/PostsInfos';
 import Posts from './App/features/posts/Posts';
 import Subreddits from './App/features/subreddits/Subreddits';
+// import MediaPost from './App/components/MediaPost';  test component for gallery images
 import './wy-lib/styles/animations.css';
 import './App.css';
 
 const App = () => {
+
+    useEffect(() => {
+        // Vérifiez la position de défilement initiale
+        console.log('Scroll position on load:', window.scrollY);
+    }, []);
 
     const [showScrollButton, setShowScrollButton] = useState(false);
 
@@ -50,6 +56,7 @@ const App = () => {
             
             <main>
                 <section className='app-section'>
+                    
                     <Posts />
                 </section>
                 <aside>

@@ -1,25 +1,27 @@
 .App {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
+    width: 100%;
+    /* gap: 1rem; */
 }
 .app-header {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     background:
     linear-gradient(70deg, rgba(252, 172, 43, 0.819), rgba(46, 0, 148, 0.819)),
     linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 0.5) 100%);
     padding: 0.4rem;
-    height: 10vh;
+    /* height: 10vh; */
     top: 0px;
     position: sticky;
     z-index: 1000;
 }
 .headerleft h1 {
     cursor: default;
-    padding: 0.6rem 1.1rem;
+    padding: clamp(0.1rem, 0.028rem + 0.36vw, 0.6rem) clamp(0.1rem, -0.029rem + 0.647vw, 1rem);
     border-radius: 20px;
-    font-size: 1.7rem;
+    font-size: clamp(8px, 8px + 0.5vw, 27.2px);
     box-shadow: rgba(0, 0, 0, 0.06) 0px -6px 6px 0px inset, 
                 rgba(0, 0, 0, 0.05) 0px -9px 7.5px 0px inset, 
                 rgba(0, 0, 0, 0.04) 0px -20px 10px 0px inset, 
@@ -27,9 +29,12 @@
                 rgba(0, 0, 0, 0.02) 0px 1px 0.5px, 
                 rgba(0, 0, 0, 0.01) 0px 2px 1px;
     transition: box-shadow 1s ease-in-out, transform 1s ease-in-out, color 1s ease-in-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.App h1:hover {
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+
+.headerleft h1:hover {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
                 rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
                 rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
                 rgba(0, 0, 0, 0.06) 0px 2px 1px, 
@@ -38,79 +43,74 @@
     color: rgb(190, 190, 190);
     transform: scale(0.7);
     cursor: pointer;
-}
-.headerleft h1:hover {
     transform: scale(0.1);
     opacity: 0;
     transition: transform 3s ease-out, opacity 3s ease-out;
 }
+.App:has(input:focus-within) .headerright > * {
+
+    transform: scale(0.5) translateX(-100%);
+    opacity: 0;
+    transition: transform 1s linear, opacity 3s ease-out;  
+}
+
 .headerleft {
-    flex: 1;
+    /* flex: 0 1 15%; */
+    flex: 0 1 15%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding-left: 2rem;
+    padding-left: 0.2rem;
+    padding-right: 0.7rem;
+    /* min-width: 15vw; */
+    /* max-width: 10vw; */
+    max-width: 15vw;
+    min-width: fit-content;
 }
 .headercenter {
-    flex: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* flex: 2 1 50%; */
+    flex: 2 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;
 }
 .headerright {
-    flex: 1;
-    display: flex;
-    justify-content: center;    /* height: 100%; */
-    width: 100%;
-    align-items: center;
-    border-radius: 1rem;
+  flex: 1 0 17%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 main {
     display: flex;
-    /* flex-direction: row-reverse; */
-    padding: 1rem 7rem 1rem 6rem;
-    gap: 10rem;
+    padding: 0rem clamp(1rem, -2.238rem + 5.181vw, 6rem);
+    /* padding: clamp(0.5rem, 0.4rem + 0.385vw, 1rem) clamp(0.1rem, -0.749rem + 4.245vw, 6rem); */
     background:
     linear-gradient(90deg, rgba(252, 172, 43, 0.819), rgba(46, 0, 148, 0.819)),
     linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
-    min-height: 90vh; /* 100vh - header height, avoid background to be blank because of little height due to lack of content */
-     flex: 1; /* Occupe tout l'espace disponible après l'en-tête */
-    overflow-y: hidden; /*Empêche le défilement de la page principale*/
+    min-height: calc(100vh - 6rem); /* 100vh - header height(PostsInfos), avoid background to be blank because of little height due to lack of content */
+    flex: 1;
 }
-
 main > :first-child {
     flex: 75vw;
     min-width: 0;
 }
-
 main > :last-child {
     flex: 15vw;
     min-width: 0;
-
 }
-
 .app-section {
     display: flex;
     flex-direction: column;
-    /* padding: 0.5rem 0; */
     gap: 0.5rem;
-    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
-
-
-
 aside {
-    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;  */
     display: flex;
-    flex-direction: row;
     gap: 0.5rem;
-    /* padding: 0.5rem; */
-    /* border: none; */
+    padding: 0.5rem;
     height: fit-content;
     word-break: break-word;
 }
-
 #scrollToTopButton {
     position: fixed; /* Position fixe pour rester en bas à droite */
     bottom: 20px; /* Marge par rapport au bas de la fenêtre */
@@ -126,84 +126,13 @@ aside {
     z-index: 9999; /* Assurer que le bouton apparaît au-dessus du contenu */
     transition: margin-right 2s ease-in-out .5s;
 }
-
-
 #scrollToTopButton.visible {
     display: block;
 }
-
-
-
-
-
-/* .fade-in-fwd {
-	-webkit-animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-	        animation: fade-in-fwd 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-
- @-webkit-keyframes fade-in-fwd {
-    0% {
-      -webkit-transform: translateZ(-80px);
-              transform: translateZ(-80px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateZ(0);
-              transform: translateZ(0);
-      opacity: 1;
-    }
-  }
-  @keyframes fade-in-fwd {
-    0% {
-      -webkit-transform: translateZ(-80px);
-              transform: translateZ(-80px);
-      opacity: 0;
-    }
-    100% {
-      -webkit-transform: translateZ(0);
-              transform: translateZ(0);
-      opacity: 1;
-    }
-  }
-
-  .fade-out-bck {
-    -webkit-animation: fade-out-bck 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-            animation: fade-out-bck 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  }
-  
-  @-webkit-keyframes fade-out-bck {
-    0% {
-      -webkit-transform: translateZ(0);
-              transform: translateZ(0);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: translateZ(-80px);
-              transform: translateZ(-80px);
-      opacity: 0;
-    }
-  }
-  @keyframes fade-out-bck {
-    0% {
-      -webkit-transform: translateZ(0);
-              transform: translateZ(0);
-      opacity: 1;
-    }
-    100% {
-      -webkit-transform: translateZ(-80px);
-              transform: translateZ(-80px);
-      opacity: 0;
-    }
-  } */
-
-
-/* Nouvelle animation combinée */
 .fade-out-in {
   -webkit-animation: fade-out-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
           animation: fade-out-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
-
-/* Définition des étapes de l'animation combinée */
 @-webkit-keyframes fade-out-in {
   0% {
     -webkit-transform: translateZ(0);
@@ -240,4 +169,137 @@ aside {
   }
 }
 
-  
+@media only screen and (max-width: 1000px) {
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* gap: 1rem; */
+}
+.app-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background:
+    linear-gradient(70deg, rgba(252, 172, 43, 0.819), rgba(46, 0, 148, 0.819)),
+    linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 0.5) 100%);
+    padding: 0.2rem;
+    /* height: 10vh; */
+    top: 0px;
+    position: sticky;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+.headerleft h1 {
+    cursor: default;
+    padding: 0.1rem 0.1rem;
+    border-radius: 20px;
+    font-size: clamp(8px, 8px + 0.5vw, 27.2px);
+    box-shadow: rgba(0, 0, 0, 0.06) 0px -6px 6px 0px inset, 
+                rgba(0, 0, 0, 0.05) 0px -9px 7.5px 0px inset, 
+                rgba(0, 0, 0, 0.04) 0px -20px 10px 0px inset, 
+                rgba(0, 0, 0, 0.03) 0px 0.5px 0.25px, 
+                rgba(0, 0, 0, 0.02) 0px 1px 0.5px, 
+                rgba(0, 0, 0, 0.01) 0px 2px 1px;
+    transition: box-shadow 1s ease-in-out, transform 1s ease-in-out, color 1s ease-in-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.App h1:hover {
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+                rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+                rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+                rgba(0, 0, 0, 0.06) 0px 2px 1px, 
+                rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+                rgba(0, 0, 0, 0.09) 0px 8px 4px;
+    color: rgb(190, 190, 190);
+    transform: scale(0.7);
+    cursor: pointer;
+}
+.headerleft h1:hover {
+    transform: scale(0.1);
+    opacity: 0;
+    transition: transform 3s ease-out, opacity 3s ease-out;
+}
+.headerleft {
+    flex: 2 0 15%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 0.2rem;
+    padding-right: 0.7rem;
+    min-width: fit-content;
+    /* max-width: 15vw; */
+}
+.headercenter {
+  flex: 1 1 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90vw;
+}
+.headerright {
+    /* display: none; */
+    flex: 1 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+main {
+    flex-direction: column-reverse;
+    padding: 0rem;
+    /* padding: clamp(0.5rem, 0.4rem + 0.385vw, 1rem) clamp(0.1rem, -0.749rem + 4.245vw, 6rem); */
+
+}
+main > * {
+    /* flex: 1; */
+    flex-basis: 100%;
+}
+main > :first-child {
+    flex: 75vw;
+    min-width: 0;
+}
+main > :last-child {
+    flex: 10vw;
+    min-width: 0;
+}
+.app-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: fit-content;
+    word-break: break-word;
+}
+#scrollToTopButton {
+    position: fixed; /* Position fixe pour rester en bas à droite */
+    bottom: 20px; /* Marge par rapport au bas de la fenêtre */
+    right: 20px; /* Marge par rapport à la droite de la fenêtre */
+    width: 40px; /* Largeur du bouton */
+    height: 40px; /* Hauteur du bouton */
+    border-radius: 50%; /* Rendre le bouton rond */
+    background-color: #333; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    font-size: 24px; /* Taille de la police */
+    border: none; /* Supprimer la bordure */
+    cursor: pointer; /* Curseur pointer au survol */
+    z-index: 9999; /* Assurer que le bouton apparaît au-dessus du contenu */
+    transition: margin-right 2s ease-in-out .5s;
+}
+#scrollToTopButton.visible {
+    display: block;
+}
+.fade-out-in {
+  -webkit-animation: fade-out-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+          animation: fade-out-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+}
+
+

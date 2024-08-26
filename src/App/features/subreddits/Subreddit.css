@@ -3,7 +3,6 @@
     height: 5rem;
     width: 100%;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    margin-bottom: 10px;
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
     /* flex: 1; */
@@ -24,8 +23,6 @@
     /* justify-content: flex-start; */
     align-items: center;
     gap: 0.7rem;
-    font-size: 1rem;
-    font-weight: bold;
     color: rgb(62, 62, 68);
 }
 
@@ -45,15 +42,11 @@
 }
 
 .boogaloo-regular {
-    font-size: 1.5rem;
+    font-size: clamp(0.7rem, 0.48rem + 0.846vw, 1.8rem);
     font-family: "Boogaloo", sans-serif;
     font-weight: 500;
     font-style: normal;
 }
-
-
-    
-
 .selected {
     background-color: #61bde7;
     box-shadow: none;
@@ -66,29 +59,21 @@
     transform: translateX(-1.2rem);
     /* animation: dissipate 2s forwards; */
 }  
-
-
 .subredditButton.selected:hover {
     background-color: #98a26c59;
     outline: none;
-}  
-
-
+} 
 .subname {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        max-width: 100%; /* Adjust this value as needed */
+        /* max-width: 100%; Adjust this value as needed */
         display: inline-block; /* Ensure the span does not take up more space than necessary */
-    }
-
-
+}
 .scale-in-hor-right {
 	-webkit-animation: scale-in-hor-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: scale-in-hor-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-
-
  @-webkit-keyframes scale-in-hor-right {
     0% {
       -webkit-transform: scaleX(0);
@@ -129,13 +114,10 @@
       opacity: 1;
     }
   }
-  
-
 .slide-in-elliptic-right-fwd {
 	-webkit-animation: slide-in-elliptic-right-fwd 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: slide-in-elliptic-right-fwd 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-
  @-webkit-keyframes slide-in-elliptic-right-fwd {
         0% {
           -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);
@@ -168,13 +150,10 @@
           opacity: 1;
         }
 }
-      
-
 .fade-out-bck {
 	-webkit-animation: fade-out-bck 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) alternate forwards;
 	        animation: fade-out-bck 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) alternate forwards;
 }
-
 @-webkit-keyframes fade-out-bck {
         0% {
           -webkit-transform: translateZ(0);
@@ -199,4 +178,184 @@
           opacity: 0;
         }
 }
-      
+
+
+
+@media only screen and (max-width: 1000px) {
+
+.Subreddit {
+          width: unset;
+          flex: 1 1 auto;
+          padding: 0;
+          height: unset;
+}
+
+.subredditButton {
+border-radius: 1rem; 
+border: none;
+padding: 0.2rem 0.1rem 0.2rem 0.2rem;
+/* height: unset; */
+/* width: 100%; */
+display: flex;
+/* justify-content: flex-start; */
+align-items: center;
+gap: 0.2rem;
+color: rgb(62, 62, 68);
+}
+
+.subredditButton:hover {
+background-color: #61bde749;
+border-color: buttonborder;
+outline: 2px solid buttonborder;
+color: rgb(222, 221, 222);
+text-transform: none;
+}
+
+.Subreddit button img {
+height: 0.8rem;
+width: auto;
+border-radius: 50%;
+
+}
+
+.boogaloo-regular {
+font-family: "Boogaloo", sans-serif;
+font-weight: 500;
+font-style: normal;
+text-transform: uppercase;
+}
+.selected {
+background-color: #61bde7;
+box-shadow: none;
+border: 3px solid #062c3e !important;
+padding-block: 1px;
+border-style: outset;
+border-color: buttonborder;
+font-weight: bolder;
+color: black;
+transform: translateX(-1.2rem);
+/* animation: dissipate 2s forwards; */
+}  
+.subredditButton.selected:hover {
+background-color: #98a26c59;
+outline: none;
+} 
+.subname {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%; /* Adjust this value as needed */
+        display: inline-block; /* Ensure the span does not take up more space than necessary */
+}
+.scale-in-hor-right {
+        -webkit-animation: scale-in-hor-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: scale-in-hor-right 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes scale-in-hor-right {
+0% {
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transform-origin: 100% 100%;
+                transform-origin: 100% 100%;
+        opacity: 1;
+}
+100% {
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+                transform-origin: 100% 100%;
+        opacity: 1;
+}
+}
+@keyframes scale-in-hor-right {
+0% {
+        -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+        -webkit-transform-origin: 100% 100%;
+                transform-origin: 100% 100%;
+        opacity: 0;
+}
+50%{
+        -webkit-transform: scaleX(1.2);
+                transform: scaleX(1.2);
+        -webkit-transform-origin: 100% 100%;
+                transform-origin: 100% 100%;
+        opacity: 0.5;
+}
+
+100% {
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transform-origin: 100% 100%;
+                transform-origin: 100% 100%;
+        opacity: 1;
+}
+}
+.slide-in-elliptic-right-fwd {
+        -webkit-animation: slide-in-elliptic-right-fwd 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: slide-in-elliptic-right-fwd 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@-webkit-keyframes slide-in-elliptic-right-fwd {
+        0% {
+        -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);
+                transform: translateX(800px) rotateY(-30deg) scale(0);
+        -webkit-transform-origin: -100% 50%;
+                transform-origin: -100% 50%;
+        opacity: 0;
+        }
+        100% {
+        -webkit-transform: translateX(0) rotateY(0) scale(1);
+                transform: translateX(0) rotateY(0) scale(1);
+        -webkit-transform-origin: -1800px 50%;
+                transform-origin: -1800px 50%;
+        opacity: 1;
+        }
+}
+@keyframes slide-in-elliptic-right-fwd {
+        0% {
+        -webkit-transform: translateX(800px) rotateY(-30deg) scale(0);
+                transform: translateX(800px) rotateY(-30deg) scale(0);
+        -webkit-transform-origin: -100% 50%;
+                transform-origin: -100% 50%;
+        opacity: 0;
+        }
+        100% {
+        -webkit-transform: translateX(0) rotateY(0) scale(1);
+                transform: translateX(0) rotateY(0) scale(1);
+        -webkit-transform-origin: -1800px 50%;
+                transform-origin: -1800px 50%;
+        opacity: 1;
+        }
+}
+.fade-out-bck {
+        -webkit-animation: fade-out-bck 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) alternate forwards;
+                animation: fade-out-bck 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) alternate forwards;
+}
+@-webkit-keyframes fade-out-bck {
+        0% {
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+        opacity: 1;
+        }
+        100% {
+        -webkit-transform: translateZ(-80px);
+                transform: translateZ(-80px);
+        opacity: 0;
+        }
+}
+@keyframes fade-out-bck {
+        0% {
+        -webkit-transform: translateZ(0);
+                transform: translateZ(0);
+        opacity: 1;
+        }
+        100% {
+        -webkit-transform: translateZ(-80px);
+                transform: translateZ(-80px);
+        opacity: 0;
+        }
+}
+        
+        
+}
+

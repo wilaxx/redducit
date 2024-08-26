@@ -1,10 +1,8 @@
 .Comment {
     display: flex;
     flex-direction: column;
-    width: 100%;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    padding: 0.8rem 1rem 0.2rem 1rem;
-    box-sizing: border-box;
+    padding: clamp(0.2rem, 0.157rem + 0.216vw, 0.5rem) clamp(0.3rem, 0.199rem + 0.504vw, 1rem);
     background-color: rgba(57, 209, 158, 0.251);
     border-radius: 0.5rem;  
 }
@@ -19,9 +17,16 @@
 .comment-header h3 {
     color: rgb(78, 243, 177);
 }
-.Comment:hover .comment-header h3 {
+.Comment:hover > .comment-header h3 {
     color: rgb(46, 82, 68);
 }
+
+.Comment .Comment:hover > .comment-header h3 {
+    color: rgb(46, 82, 68);
+}
+/* .Comment .Comment:has(:hover) > .comment-header h3 {
+    color: rgb(46, 82, 68);
+} */
 .comment-footer {
     display: flex;
     justify-content: flex-end;
@@ -135,3 +140,147 @@
     font-style: italic;
   }
   
+  @media only screen and (max-width: 1000px) {
+
+    .Comment {
+        display: flex;
+        flex-direction: column;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        background-color: rgba(57, 209, 158, 0.251);
+        border-radius: 0.5rem;  
+    }
+    .Comment .author {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    .Comment .body {
+        margin-bottom: 0.5rem;
+    }
+    .comment-header h3 {
+        color: rgb(78, 243, 177);
+    }
+    .Comment:hover > .comment-header h3 {
+        color: rgb(46, 82, 68);
+    }
+    
+    .Comment .Comment:hover > .comment-header h3 {
+        color: rgb(46, 82, 68);
+    }
+    /* .Comment .Comment:has(:hover) > .comment-header h3 {
+        color: rgb(46, 82, 68);
+    } */
+    .comment-footer {
+        display: flex;
+        justify-content: flex-end;
+        /* align-items: center; */
+    }
+    .Comment .Comment {
+        margin-bottom: 0.4rem;
+    }
+    .Comment .comment-footer {
+        margin-bottom: 0.2rem;
+    }
+    .Comment .Comment:hover {
+        background-color: rgba(234, 248, 243, 0.251);
+    }
+    
+    .Comment:hover {
+        background-color: rgba(234, 248, 243, 0.251);
+    }
+    .patrick-hand-sc-regular {
+        font-size: 1.6rem;
+        font-family: "Patrick Hand SC", cursive;
+        font-weight: 500;
+        font-style: normal;
+      }
+    .Comment .created-date {
+         font-size: 1rem;
+        color: #202121;
+    }
+    .Comment--highlighted {
+        border: 1px solid #8c9097; 
+        border-radius: 0.8rem;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px -10px 10px 0px inset, 
+        rgba(0, 0, 0, 0.15) 0px -15px 12.5px 0px inset, 
+        rgba(0, 0, 0, 0.1) 0px -25px 15px 0px inset, 
+        rgba(0, 0, 0, 0.1) 0px 1px 0.5px, 
+        rgba(0, 0, 0, 0.08) 0px 2px 1px, 
+        rgba(0, 0, 0, 0.06) 0px 3px 1.5px;
+    }
+    .comment-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-bottom: 0.5rem;
+       
+    }
+    .comment-body {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        p {
+            word-break: break-word;
+            text-align: justify;
+        }
+    }
+    .replies-icon:hover {
+        /* border-radius: 1rem; */
+        color: rgb(85, 255, 66);
+    }
+    .replies-icon svg {
+        /* width: 1.5rem;
+        height: 1.5rem; */
+    }
+    .replies-icon svg:hover {
+        
+    }
+    .replies-icon span {
+        cursor: default;
+    }
+    
+    .ubuntu-light {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 300;
+        font-style: normal;
+    }  
+    .ubuntu-regular {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    } 
+    .ubuntu-medium {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+    .ubuntu-bold {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 700;
+        font-style: normal;
+    }
+    .ubuntu-light-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 300;
+        font-style: italic;
+      }
+      
+      .ubuntu-regular-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        font-style: italic;
+      }
+      
+      .ubuntu-medium-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 500;
+        font-style: italic;
+      }
+      
+      .ubuntu-bold-italic {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 700;
+        font-style: italic;
+      }
+  
+  }

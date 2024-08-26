@@ -36,16 +36,16 @@ const Comment = ({ comment }) => {
                     return (
                         <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
                             {numOfReplies > 0 && <span>{numOfReplies}</span>}
-                    <TbMessagesOff onClick={() => setShowReplies(!showReplies)} />
+                            <TbMessagesOff />
                         </div>
                     );
                 } else {
 
                     return (
-                    <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
-                        {numOfReplies > 0 && <span>{numOfReplies}</span>}
-                        <TbMessages />
-                    </div>
+                        <div className="replies-icon" onClick={() => setShowReplies(!showReplies)}>
+                            {numOfReplies > 0 && <span>{numOfReplies}</span>}
+                            <TbMessages />
+                        </div>
                     );
             
                 }
