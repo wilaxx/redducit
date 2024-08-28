@@ -130,10 +130,10 @@ const Post = ({post}) => {
                 {spoiler ? (
                 <>
                     {!showSpoiler ? (
-                        <ImEye onClick={handleSpoilerView} />
+                        <ImEye className='eye-on' onClick={handleSpoilerView} />
                     ) : (
                         <>
-                            <ImEyeBlocked onClick={handleSpoilerView} />
+                            <ImEyeBlocked className='eye-off' onClick={handleSpoilerView} />
                                     {renderContent()}
                         </>
                     )}

@@ -126,6 +126,10 @@ font-size: 1.2rem;
 .spoiler:hover {
 background-color: rgb(230, 183, 183);
 }
+.eye-off:hover {
+    color: black;
+}
+
 .md {
 display: flex;
 flex-direction: column;
@@ -141,6 +145,7 @@ padding: 0.2rem;
 border-radius: 0.2rem;
 font-size: clamp(0.5rem, 0.414rem + 0.432vw, 1.1rem);
 }
+
 .md p {
 word-break: break-word;
 font-size: clamp(1.1rem, 0.971rem + 0.647vw, 2rem);
