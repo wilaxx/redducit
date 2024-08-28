@@ -135,10 +135,11 @@ gap: 0.3rem;
 overflow-wrap: break-word;
 word-wrap: break-word;
 background-color: rgb(255, 255, 255);
+white-space: pre-wrap;
 color: rgb(0, 0, 0);
 padding: 0.2rem;
 border-radius: 0.2rem;
-font-size: 1rem;
+font-size: clamp(0.5rem, 0.414rem + 0.432vw, 1.1rem);
 }
 .md p {
 word-break: break-word;
@@ -318,14 +319,20 @@ box-sizing: border-box; /* Ajouté */
         border-radius: 0.5rem;
         font-size: 1.2rem;
         }
+
+        .md pre {
+            white-space: pre-wrap;
+        }
         .md code {
         overflow-wrap: break-word;
+        /* text-align: justify; */
         word-wrap: break-word;
+        /* white-space: pre-wrap; */
+        /* line-break: loose; */
         background-color: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         padding: 0.2rem;
         border-radius: 0.2rem;
-        font-size: 1rem;
         }
 
 }

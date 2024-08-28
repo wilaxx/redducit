@@ -37,8 +37,8 @@ input::placeholder {
 }
 
 input:focus::placeholder {
-  font-size: clamp(9.6px, 8.686px + 0.286vw, 16px);
-  transform: translateY(-1.1rem) translateX(0.5rem);
+  font-size: clamp(0.5rem, 0.428rem + 0.36vw, 1rem);
+  transform: translateY(-1rem) translateX(0.5rem);
   color: rgb(66, 34, 136);
 }
 input:focus {

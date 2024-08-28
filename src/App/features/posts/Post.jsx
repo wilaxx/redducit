@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import './Post.css';
 import { TiArrowUpOutline } from "react-icons/ti";
-import { MdOutlineMessage } from "react-icons/md";
 import { TbMessage2, TbMessage2Off } from "react-icons/tb";
+import { ImEye, ImEyeBlocked } from "react-icons/im";
 import { FaUserPen } from "react-icons/fa6";
 import { ImNewTab } from "react-icons/im";
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,9 +15,14 @@ const Post = ({post}) => {
    
     const { title, author, num_comments, ups, created_utc, permalink, selftext_html, secure_media, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail, loadingComments, spoiler } = post;
     const [showComments, setShowComments] = useState(false);
+    const [showSpoiler, setShowSpoiler] = useState(false);
     // const { loadingComments } = useSelector(selectPostsState);
     const dispatch = useDispatch();
    
+    const handleSpoilerView = () => {
+        setShowSpoiler(!showSpoiler);
+    }
+
 
     const isImageUrl = (url) => {
         return url && url.match(/\.(jpeg|jpg|gif|png)$/) != null;
@@ -119,9 +124,23 @@ const Post = ({post}) => {
                 </a>
             </header>
 
-            <section className={`post-section ${spoiler ? 'spoiler' : ''}`}>
-                <div className='post-content'>
-                    {renderContent()}
+            <section className="post-section">
+                
+                <div className={`post-content ${spoiler ? 'spoiler' : ''}`}>
+                {spoiler ? (
+                <>
+                    {!showSpoiler ? (
+                        <ImEye onClick={handleSpoilerView} />
+                    ) : (
+                        <>
+                            <ImEyeBlocked onClick={handleSpoilerView} />
+                                    {renderContent()}
+                        </>
+                    )}
+                </>
+            ) : (
+                renderContent()
+            )}
                 </div>
             </section>
            

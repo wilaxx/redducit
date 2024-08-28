@@ -40,7 +40,7 @@
     background-color: rgba(234, 248, 243, 0.251);
 }
 .patrick-hand-sc-regular {
-    font-size: 1.6rem;
+    font-size: clamp(1rem, 0.914rem + 0.432vw, 1.6rem);
     font-family: "Patrick Hand SC", cursive;
     font-weight: 500;
     font-style: normal;
@@ -74,10 +74,24 @@
         text-align: justify;
     }
 }
-.replies-icon:hover, .replies-icon:hover:has(.messages-off) {
-    /* border-radius: 1rem; */
-    color: rgb(85, 255, 66);
+.replies-icon:has(.messages-on) {
+    color: #f0f0f0; /* Blanc */
 }
+
+.replies-icon:hover:has([class^="messages-"]) {
+    color: #332e03; /* Jaune pâle */
+}
+
+.replies-icon:has(.messages-off) {
+    /* color: #f4efbd; Gris clair */
+    filter: contrast(0.8);
+    filter: drop-shadow(0 0 0.5rem #f1df17);
+    
+}
+
+
+
+
 .replies-icon {
     display: flex;  
 }
@@ -90,9 +104,7 @@
     font-size: clamp(0.6rem, 0.314rem + 0.432vw, 1rem);
 }
 
-.replies-icon:has(.messages-off) {
-    color: rgb(247, 210, 210);
-}
+
 
 .ubuntu-light {
     font-family: "Ubuntu", sans-serif;

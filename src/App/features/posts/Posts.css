@@ -10,15 +10,32 @@
 .Posts::-webkit-scrollbar {
     display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
 }
-.posts-loading {
+
+.no-posts {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 2rem; /* empeche l icone loading de passer en dessous du viewport height sur les petits telephones*/
+    font-size: clamp(1.5rem, 1.5rem + 1.5vw, 3rem);
+    color: var(--color-text);
+    /* margin-top: 2rem; */
+}
+.posts-loading {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: center;
+    /* position: fixed;
+    top: 8vh; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000; 
+    max-height: 92vh; */
+    padding: 2rem;
 }
 .spinner {
-    font-size: 16rem;
+    flex: 1 1 auto;
+    font-size: clamp(11rem, 10.281rem + 3.597vw, 16rem);
     animation: spin 1s ease-out infinite;
 }
 @keyframes spin {
@@ -50,15 +67,13 @@
     .Posts::-webkit-scrollbar {
         display: none; /* Cache la barre de défilement pour les navigateurs WebKit (Chrome, Safari) */
     }
-    .post-loading {
+    .posts-loading {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 60vh;
     }
-    .spinner {
-        font-size: 13rem;
-        animation: spin 1s ease-out infinite;
-    }
+}
+
+.post-section.spoiler {
     
 }

@@ -38,17 +38,19 @@ const Posts = () => {
         </div>
     }
 
-    if (Object.keys(postsData).length === 0) {
-        return;
-    }
 
     if(isError) {
         return <div>Error: {errorMessage} {errorStatus}</div>
     }
 
-    if(!isLoading && postsData.length === 0) {
-        return <div>No posts available</div>
+    if (Array.isArray(postsData) && postsData.length === 0) {
+        return <div className='no-posts' >No posts available</div>;
     }
+
+    if (typeof postsData === 'object' && Object.keys(postsData).length === 0) {
+        return <div>yooo</div>;
+    }
+
 
     return (
         <div className='Posts'>
