@@ -1,0 +1,40 @@
+.Gallery {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.gallery-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.gallery-img {
+    min-width: 100%;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.gallery-img.inactive {
+    display: none;
+}
+
+.btn-gallery-prev, .btn-gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+ .btn-gallery-prev {
+    left: 0.6rem;
+}
+
+.btn-gallery-next {
+    right: 0.6rem;
+}

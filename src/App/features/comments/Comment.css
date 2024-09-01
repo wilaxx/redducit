@@ -66,14 +66,29 @@
     padding-bottom: 0.5rem;
    
 }
-.comment-body {
+
+.body_html .md {
     display: flex;
-    align-items: center;
-    p {
-        word-break: break-word;
-        text-align: justify;
-    }
+    flex-direction: column;
+    white-space: break-spaces;
+    gap: 0.3rem;
 }
+    .body_html .md code {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    background-color: rgb(255, 255, 255);
+    white-space: pre-wrap;
+    color: rgb(0, 0, 0);
+    padding: 0.2rem;
+    border-radius: 0.2rem;
+    font-size: clamp(0.5rem, 0.414rem + 0.432vw, 1.1rem);
+    }
+    .body_html .md p {
+    font-size: clamp(0.8rem, 0.699rem + 0.504vw, 1.5rem);
+    word-break: break-word;
+    line-height: 1.1;
+    overflow-wrap: break-word;
+    }
 .replies-icon:has(.messages-on) {
     color: #f0f0f0; /* Blanc */
 }
@@ -117,7 +132,7 @@
     font-style: normal;
 } 
 .ubuntu-medium {
-    font-size: clamp(0.8rem, 0.699rem + 0.504vw, 1.5rem);
+   
     font-family: "Ubuntu", sans-serif;
     font-weight: 300;
     font-style: normal;

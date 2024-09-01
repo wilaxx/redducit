@@ -6,16 +6,23 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectComment } from '../posts/postsSlice.js';
 
 const Comment = ({ comment }) => {
-    const { author, body, created_utc, replies } = comment;
+    const { author, body_html, created_utc, replies, id } = comment;
 
     const [showReplies, setShowReplies] = React.useState(false);
     const dispatch = useDispatch();
 
-    const isSelected = useSelector(state => state.posts.selectedCommentId === comment.id);
+    const isSelected = useSelector(state => state.posts.selectedCommentId === id);
     
+    const addTargetBlankToLinks = (htmlString) => {
+        // Utilise une expression régulière pour trouver les balises <a> sans l'attribut target
+        return htmlString.replace(/<a\s+(?![^>]*\btarget=)[^>]*>/gi, (match) => {
+            // Ajoute l'attribut target="_blank" à chaque balise <a>
+            return match.replace('<a', '<a target="_blank"');
+        });
+    };
 
     const handleClick = () => {
-        dispatch(selectComment(comment.id));
+        dispatch(selectComment(id));
     };
 
     const GetNumOfReplies = () => {
@@ -27,6 +34,7 @@ const Comment = ({ comment }) => {
     }
 
     let numOfReplies = GetNumOfReplies();
+    
     const showIconReplies = (replies) => {
        
         if (replies !== "" && replies.data && replies.data.children) {
@@ -60,8 +68,7 @@ const Comment = ({ comment }) => {
       if (showReplies && replies !== "" && replies.data && replies.data.children && replies.data.children.length > 0) {
           return replies.data.children.map((reply) => {
               if (reply.kind === "more") {
-                console.dir(reply);
-                  return;
+                  return null;
               } else {
                   return <Comment key={reply.data.id} comment={reply.data} />;
               }
@@ -71,9 +78,24 @@ const Comment = ({ comment }) => {
   return null;
     }
 
- 
+    const decodeHTML = (html) => {
+        var txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    };
 
-
+    const renderContent = () => {
+        let content = [];
+    
+        if (body_html) {
+            const decodedHTML = decodeHTML(body_html);
+            const updatedHTML = addTargetBlankToLinks(decodedHTML);
+            content.push(<div key={`${id}-body`} className='body_html ' dangerouslySetInnerHTML={{ __html: updatedHTML }} />);
+        }
+    
+        return content.length > 0 ? content : null;
+    
+    }
 
     return (
         <div className={`Comment ${isSelected ? 'Comment--highlighted' : ''}`} onClick={handleClick}>
@@ -86,7 +108,7 @@ const Comment = ({ comment }) => {
             </div>
 
             <div className='comment-body ubuntu-medium'>
-                <p>{body}</p>
+                {renderContent()}
             </div>
 
             <div className="comment-footer">

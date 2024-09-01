@@ -130,12 +130,12 @@ background-color: rgb(230, 183, 183);
     color: black;
 }
 
-.md {
+.selftext_html .md {
 display: flex;
 flex-direction: column;
 gap: 0.3rem;
 }
-.md code {
+.selftext_html .md code {
 overflow-wrap: break-word;
 word-wrap: break-word;
 background-color: rgb(255, 255, 255);
@@ -145,8 +145,7 @@ padding: 0.2rem;
 border-radius: 0.2rem;
 font-size: clamp(0.5rem, 0.414rem + 0.432vw, 1.1rem);
 }
-
-.md p {
+.selftext_html .md p {
 word-break: break-word;
 font-size: clamp(1.1rem, 0.971rem + 0.647vw, 2rem);
 line-height: 0.8;
@@ -181,7 +180,7 @@ height: auto;
 max-height: 70vh;
 object-fit: contain;
 }
-.img-single:hover, .Post img:hover, .Post video:hover {
+.img-single:hover {
 max-height: fit-content; /* Changez cette valeur selon vos besoins */
 }
 /* Pour les images multiples, si vous avez une classe dédiée */
@@ -191,6 +190,9 @@ max-height: auto; /* Ajouté pour maintenir les proportions */
 display: block; /* Ajouté pour éviter les espaces blancs autour des images */
 box-sizing: border-box; /* Ajouté */
 }
+.video::media-controls-volume-slider {
+    display: none;
+  }
 .scale-in-hor-center {
 -webkit-animation: scale-in-hor-center 15s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         animation: scale-in-hor-center 15s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

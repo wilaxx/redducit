@@ -22,7 +22,8 @@
 .posts-loading {
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
+    /* padding-top: clamp(10vh, 35vh - 40vw, 30vh); */
+    justify-content: center;
     align-items: center;
     /* position: fixed;
     top: 8vh; 
@@ -31,10 +32,9 @@
     bottom: 0;
     z-index: 1000; 
     max-height: 92vh; */
-    padding: 2rem;
 }
 .spinner {
-    flex: 1 1 auto;
+    /* flex: 1 1 auto; */
     font-size: clamp(11rem, 10.281rem + 3.597vw, 16rem);
     animation: spin 1s ease-out infinite;
 }

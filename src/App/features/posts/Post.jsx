@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import moment from 'moment';
 import './Post.css';
 import { TiArrowUpOutline } from "react-icons/ti";
@@ -10,10 +10,28 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectPostsState } from './postsSlice.js';
 import { fetchComments } from './postsSlice.js';
 import Comments from '../comments/Comments.jsx';
+import Gallery from '../../components/Gallery.jsx';
 
 const Post = ({post}) => {
    
-    const { title, author, num_comments, ups, created_utc, permalink, selftext_html, secure_media, preview, media_metadata, id, url_overridden_by_dest, url, thumbnail, loadingComments, spoiler } = post;
+    const { 
+        title, 
+        author, 
+        num_comments, 
+        ups, 
+        created_utc, 
+        permalink, 
+        selftext_html, 
+        secure_media, 
+        media_metadata, 
+        id, 
+        url_overridden_by_dest, 
+        url, 
+        thumbnail, 
+        loadingComments, 
+        spoiler
+     } = post;
+     
     const [showComments, setShowComments] = useState(false);
     const [showSpoiler, setShowSpoiler] = useState(false);
     // const { loadingComments } = useSelector(selectPostsState);
@@ -22,12 +40,9 @@ const Post = ({post}) => {
     const handleSpoilerView = () => {
         setShowSpoiler(!showSpoiler);
     }
-
-
     const isImageUrl = (url) => {
         return url && url.match(/\.(jpeg|jpg|gif|png)$/) != null;
     };
-
     const getImageUrl = () => {
         if (isImageUrl(url_overridden_by_dest)) {
             return url_overridden_by_dest;
@@ -39,13 +54,11 @@ const Post = ({post}) => {
             return null;
         }
     };
-
     const decodeHTML = (html) => {
         var txt = document.createElement('textarea');
         txt.innerHTML = html;
         return txt.value;
     };
-
     const addTargetBlankToLinks = (htmlString) => {
         // Utilise une expression régulière pour trouver les balises <a> sans l'attribut target
         return htmlString.replace(/<a\s+(?![^>]*\btarget=)[^>]*>/gi, (match) => {
@@ -53,41 +66,6 @@ const Post = ({post}) => {
             return match.replace('<a', '<a target="_blank"');
         });
     };
-
-
-    const renderContent = () => {
-        let content = [];
-        const imageUrl = getImageUrl();
-
-        if (selftext_html) {
-            const decodedHTML = decodeHTML(selftext_html);
-            const updatedHTML = addTargetBlankToLinks(decodedHTML);
-            content.push(<div key={`${id}-selftext`} className='selftext_html patrick-hand-sc-regular' dangerouslySetInnerHTML={{ __html: updatedHTML }} />);
-        }
-
-        if (imageUrl) {
-            content.push(<img key={`${id}-singleImage`} className='img-single' src={imageUrl} alt={title} />);
-        }
-        if (secure_media && secure_media.reddit_video && secure_media.reddit_video.fallback_url) {
-
-            const fullUrl = secure_media.reddit_video.fallback_url;
-
-            // Extraire la base de l'URL
-            const baseUrl = fullUrl.substring(0, fullUrl.lastIndexOf('/') + 1);
-
-            // Concaténer avec "DASH_AUDIO_128.mp4"
-            const audioUrl = baseUrl + "DASH_720.mp4";
-            
-            content.push(
-                <video key={`${id}-video`} className='video' controls>
-                    <source src={secure_media.reddit_video.fallback_url} type='video/mp4' />
-                    <source src={audioUrl} type="audio/mp4" />
-                </video>
-            );
-        }
-        return content.length > 0 ? content : null;
-    };
-
     const handleCommentsClick = (e) => {
         if (!showComments) {
             dispatch(fetchComments(permalink));
@@ -104,6 +82,70 @@ const Post = ({post}) => {
     setShowComments(!showComments);
     };
 
+    const videoRef = useRef(null);
+    const audioRef = useRef(null);
+    const handlePlay = () => {
+        audioRef.current.play();
+      };
+      const handlePause = () => {
+        audioRef.current.pause();
+      };
+      const handleTimeUpdate = () => {
+        audioRef.current.currentTime = videoRef.current.currentTime;
+      };
+
+
+
+    const renderContent = () => {
+        let content = [];
+        const imageUrl = getImageUrl();
+
+        if (selftext_html) {
+            const decodedHTML = decodeHTML(selftext_html);
+            const updatedHTML = addTargetBlankToLinks(decodedHTML);
+            content.push(<div key={`${id}-selftext`} className='selftext_html patrick-hand-sc-regular' dangerouslySetInnerHTML={{ __html: updatedHTML }} />);
+        }
+
+        if (imageUrl) {
+            content.push(<img key={`${id}-singleImage`} className='img-single' src={imageUrl} alt={title} />);
+        }
+
+        if (secure_media && secure_media.reddit_video && secure_media.reddit_video.fallback_url) {
+
+            const fullUrl = secure_media.reddit_video.fallback_url;
+
+            // Extraire la base de l'URL
+            const baseUrl = fullUrl.substring(0, fullUrl.lastIndexOf('/') + 1);
+
+            // Concaténer avec "DASH_AUDIO_128.mp4"
+            const audioUrl = baseUrl + "DASH_AUDIO_128.mp4";
+            
+            content.push(
+            <React.Fragment key={`${id}-media`} >
+                <video
+                    className='video' 
+                    controls
+                    ref={videoRef}
+                    onPlay={handlePlay}
+                    onPause={handlePause}
+                    onTimeUpdate={handleTimeUpdate}
+                >
+                    <source src={secure_media.reddit_video.fallback_url} type='video/mp4' />
+                    
+                </video>
+                <audio ref={audioRef}>
+                    <source src={audioUrl} type="audio/mp4" />
+                </audio>
+            </React.Fragment>
+            );
+        }
+
+        if(media_metadata && Object.keys(media_metadata).length > 0) {
+               return <Gallery data={media_metadata} key={`${id}-gallery`} /> 
+        }
+
+        return content.length > 0 ? content : null;
+    };
     const renderIconComments = () => {
         if (!showComments || loadingComments) {
             return <TbMessage2 className="icon-comments" onClick={handleCommentsClick} />
@@ -115,11 +157,11 @@ const Post = ({post}) => {
 
     return (
     <>
-        <article className='Post scale-in-center' key={id}>
+        <article className='Post scale-in-center'>
 
             <header className="post-header">
                 <h2 className='grandstander-title'>{title}</h2>
-                <a key={`${id}-link`} href={`https://www.reddit.com${permalink}`} target="_blank" rel="noopener noreferrer">
+                <a href={`https://www.reddit.com${permalink}`} target="_blank" rel="noopener noreferrer">
                     <ImNewTab className='icon-newtab' />
                 </a>
             </header>
