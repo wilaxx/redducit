@@ -84,6 +84,7 @@ const Post = ({post}) => {
 
     const videoRef = useRef(null);
     const audioRef = useRef(null);
+
     const handlePlay = () => {
         audioRef.current.play();
       };
@@ -123,7 +124,7 @@ const Post = ({post}) => {
             content.push(
             <React.Fragment key={`${id}-media`} >
                 <video
-                    className='video' 
+                    className='video'
                     controls
                     ref={videoRef}
                     onPlay={handlePlay}
@@ -133,6 +134,7 @@ const Post = ({post}) => {
                     <source src={secure_media.reddit_video.fallback_url} type='video/mp4' />
                     
                 </video>
+
                 <audio ref={audioRef}>
                     <source src={audioUrl} type="audio/mp4" />
                 </audio>
